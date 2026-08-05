@@ -108,11 +108,16 @@ const go = (key) => emit('navigate', key)
 
 <style scoped>
 .footer {
-  background: #000;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--footer-bg, #000);
+  border-top: 1px solid var(--border);
   padding: 3.5rem 2rem 1.5rem;
   margin-top: auto;
   font-family: 'Roboto', sans-serif;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme="light"] .footer {
+  --footer-bg: #ffffff;
 }
 
 .footer-inner {
@@ -143,7 +148,7 @@ const go = (key) => emit('navigate', key)
 }
 
 .footer-col h4 {
-  color: #fff;
+  color: var(--text-strong);
   margin: 0 0 1rem;
   font-size: 0.72rem;
   letter-spacing: 0.18em;
@@ -168,14 +173,14 @@ const go = (key) => emit('navigate', key)
 }
 
 .footer-col a:hover {
-  color: #fff;
+  color: var(--text-strong);
 }
 
 .footer-bottom {
   max-width: 1100px;
   margin: 0 auto;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -224,7 +229,7 @@ const go = (key) => emit('navigate', key)
 }
 
 .social-list a:hover {
-  color: #fff;
+  color: var(--text-strong);
 }
 
 .tg-icon {
@@ -235,7 +240,7 @@ const go = (key) => emit('navigate', key)
 }
 
 .social-list a:hover .tg-icon {
-  color: #fff;
+  color: var(--text-strong);
 }
 
 .devs-label {
@@ -259,8 +264,8 @@ const go = (key) => emit('navigate', key)
   gap: 0.4rem;
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--surface);
+  border: 1px solid var(--border);
   color: var(--muted);
   font-size: 0.82rem;
   text-decoration: none;
@@ -270,7 +275,7 @@ const go = (key) => emit('navigate', key)
 .dev-link:hover {
   background: rgba(42, 171, 238, 0.12);
   border-color: rgba(42, 171, 238, 0.4);
-  color: #fff;
+  color: var(--text-strong);
 }
 
 .tg-avatar {
@@ -279,7 +284,7 @@ const go = (key) => emit('navigate', key)
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--surface);
 }
 
 .dev-link .tg-icon-fallback {

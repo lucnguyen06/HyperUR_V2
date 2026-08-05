@@ -57,12 +57,12 @@ const error = computed(() => store.error)
 .section-header h2 {
   margin: 0;
   font-size: 1.5rem;
-  color: #fff;
+  color: var(--text-strong);
 }
 
 .device-count {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--muted);
   font-weight: normal;
 }
 
@@ -80,14 +80,14 @@ const error = computed(() => store.error)
   align-items: center;
   justify-content: center;
   padding: 4rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--muted);
 }
 
 .spinner {
   width: 48px;
   height: 48px;
-  border: 4px solid rgba(109, 116, 134, 0.3);
-  border-top-color: #6d7486;
+  border: 4px solid var(--input-border);
+  border-top-color: var(--brand-2);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;
@@ -102,16 +102,16 @@ const error = computed(() => store.error)
 .error-state button {
   margin-top: 1rem;
   padding: 0.75rem 1.5rem;
-  background: linear-gradient(180deg, #6d7486 0%, #0a0d13 100%);
+  background: linear-gradient(180deg, var(--brand-2) 0%, var(--brand-1) 100%);
   color: white;
-  border: 1px solid rgba(109, 116, 134, 0.5);
+  border: 1px solid rgba(138, 108, 255, 0.5);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .error-state button:hover {
-  border-color: #6d7486;
-  box-shadow: 0 4px 15px rgba(109, 116, 134, 0.3);
+  border-color: var(--brand-1);
+  box-shadow: 0 4px 15px rgba(138, 108, 255, 0.3);
 }
 </style>

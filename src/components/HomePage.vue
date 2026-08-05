@@ -141,8 +141,8 @@ const goGuide = () => emit('navigate', 'guide')
   display: flex;
   justify-content: center;
   background:
-    radial-gradient(ellipse at top, rgba(138, 108, 255, 0.15), transparent 60%),
-    #000;
+    radial-gradient(ellipse at top, rgba(138, 108, 255, 0.18), transparent 60%),
+    var(--bg);
 }
 
 .hero-inner {
@@ -165,7 +165,7 @@ const goGuide = () => emit('navigate', 'guide')
   font-size: clamp(2.8rem, 7vw, 5.2rem);
   line-height: 1.05;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-strong);
   letter-spacing: -0.03em;
   margin-bottom: 1.5rem;
 }
@@ -188,7 +188,7 @@ const goGuide = () => emit('navigate', 'guide')
 }
 
 .hero-desc strong {
-  color: #fff;
+  color: var(--text-strong);
   font-weight: 500;
 }
 
@@ -202,9 +202,9 @@ const goGuide = () => emit('navigate', 'guide')
 .btn-primary {
   padding: 0.85rem 1.75rem;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  background: #fff;
-  color: #000;
+  border: 1px solid var(--text-strong);
+  background: var(--text-strong);
+  color: var(--bg);
   font-weight: 500;
   cursor: pointer;
   transition: transform 0.2s ease, background 0.2s ease;
@@ -220,14 +220,14 @@ const goGuide = () => emit('navigate', 'guide')
   border-radius: 8px;
   background: transparent;
   border: 1px solid var(--border);
-  color: #fff;
+  color: var(--text-strong);
   cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease;
   font-family: inherit;
 }
 .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(138, 108, 255, 0.08);
+  border-color: rgba(138, 108, 255, 0.35);
 }
 
 /* Section */
@@ -254,7 +254,7 @@ const goGuide = () => emit('navigate', 'guide')
   font-family: 'Inter', 'Be Vietnam Pro', system-ui, sans-serif;
   font-size: clamp(1.8rem, 3.5vw, 2.4rem);
   font-weight: 600;
-  color: #fff;
+  color: var(--text-strong);
   letter-spacing: -0.02em;
 }
 
@@ -281,7 +281,7 @@ const goGuide = () => emit('navigate', 'guide')
   font-family: 'Inter', 'Be Vietnam Pro', system-ui, sans-serif;
   font-size: 1.4rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-strong);
   margin-bottom: 0.4rem;
 }
 
@@ -319,7 +319,7 @@ const goGuide = () => emit('navigate', 'guide')
 }
 
 .step-body h4 {
-  color: #fff;
+  color: var(--text-strong);
   margin-bottom: 0.4rem;
   font-size: 1.05rem;
   font-weight: 500;
@@ -362,7 +362,7 @@ const goGuide = () => emit('navigate', 'guide')
 }
 
 .compare-topic {
-  color: #fff;
+  color: var(--text-strong);
   font-weight: 500;
 }
 
@@ -393,7 +393,7 @@ const goGuide = () => emit('navigate', 'guide')
   text-align: left;
   background: transparent;
   border: none;
-  color: #fff;
+  color: var(--text-strong);
   padding: 1.1rem 1.25rem;
   font-size: 1rem;
   font-weight: 500;
@@ -405,7 +405,7 @@ const goGuide = () => emit('navigate', 'guide')
 }
 
 .faq-q:hover {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--surface);
 }
 
 .faq-toggle {
@@ -434,7 +434,7 @@ const goGuide = () => emit('navigate', 'guide')
   font-family: 'Inter', 'Be Vietnam Pro', system-ui, sans-serif;
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   font-weight: 600;
-  color: #fff;
+  color: var(--text-strong);
   margin-bottom: 1.75rem;
   letter-spacing: -0.02em;
 }

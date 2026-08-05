@@ -71,11 +71,11 @@ const getRegionColor = (region) => {
 
 <style scoped>
 .recent-updates {
-  background: rgba(20, 22, 28, 0.8);
+  background: var(--surface-strong);
   border-radius: 16px;
   padding: 1.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-strong);
   font-family: 'Roboto', sans-serif;
 }
 
@@ -85,18 +85,18 @@ const getRegionColor = (region) => {
   align-items: center;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 2px solid rgba(109, 116, 134, 0.3);
+  border-bottom: 2px solid var(--border);
 }
 
 .section-header h2 {
   margin: 0;
   font-size: 1.5rem;
-  color: #fff;
+  color: var(--text-strong);
 }
 
 .update-time {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--muted);
 }
 
 .updates-list {
@@ -106,16 +106,15 @@ const getRegionColor = (region) => {
 }
 
 .update-item {
-  background: rgba(10, 13, 19, 0.6);
+  background: var(--surface);
   border-radius: 12px;
   padding: 1rem;
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
 }
 
 .update-item:hover {
-  background: rgba(10, 13, 19, 0.8);
-  border-color: rgba(109, 116, 134, 0.3);
+  border-color: rgba(138, 108, 255, 0.4);
 }
 
 .device-info {
@@ -128,16 +127,17 @@ const getRegionColor = (region) => {
 .device-info h4 {
   margin: 0;
   font-size: 1rem;
-  color: #fff;
+  color: var(--text-strong);
 }
 
 .device-code {
   font-size: 0.75rem;
-  color: #fff;
+  color: var(--muted);
   font-family: monospace;
-  background: rgba(109, 116, 134, 0.2);
+  background: var(--surface);
   padding: 0.2rem 0.5rem;
   border-radius: 4px;
+  border: 1px solid var(--border);
 }
 
 .versions-list {
@@ -151,19 +151,19 @@ const getRegionColor = (region) => {
   align-items: center;
   gap: 1rem;
   padding: 0.5rem;
-  background: rgba(20, 22, 28, 0.8);
+  background: var(--surface);
   border-radius: 8px;
   font-size: 0.9rem;
 }
 
 .version-number {
   font-family: monospace;
-  color: #fff;
+  color: var(--text-strong);
   font-weight: 500;
 }
 
 .version-date {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--muted);
   font-size: 0.8rem;
 }
 

@@ -92,26 +92,30 @@ const handleDownload = () => {
 
 <style scoped>
 .device-card {
-  background: rgba(20, 22, 28, 0.8);
+  background: var(--card-bg, rgba(20, 22, 28, 0.8));
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow);
   transition: all 0.3s ease;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-strong);
   font-family: 'Roboto', sans-serif;
+}
+
+[data-theme="light"] .device-card {
+  --card-bg: #ffffff;
 }
 
 .device-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-  border-color: rgba(109, 116, 134, 0.3);
+  box-shadow: 0 8px 30px rgba(138, 108, 255, 0.18);
+  border-color: rgba(138, 108, 255, 0.4);
 }
 
 .device-image {
-  background: linear-gradient(180deg, #6d7486 0%, #0a0d13 100%);
+  background: linear-gradient(180deg, rgba(138, 108, 255, 0.25) 0%, rgba(15, 23, 42, 0.85) 100%);
   height: 160px;
   display: flex;
   align-items: center;
@@ -143,14 +147,14 @@ const handleDownload = () => {
 .image-placeholder {
   width: 80px;
   height: 80px;
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--surface);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2.5rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-strong);
 }
 
 .device-info {
@@ -163,14 +167,14 @@ const handleDownload = () => {
 .device-name {
   margin: 0 0 0.25rem 0;
   font-size: 1.1rem;
-  color: #fff;
+  color: var(--text-strong);
   font-weight: 600;
 }
 
 .device-code {
   margin: 0 0 0.5rem 0;
   font-size: 0.8rem;
-  color: #fff;
+  color: var(--muted);
 }
 
 .device-tags {
@@ -181,17 +185,17 @@ const handleDownload = () => {
 }
 
 .series-tag {
-  background: rgba(109, 116, 134, 0.2);
-  color: rgba(255, 255, 255, 0.8);
+  background: var(--surface);
+  color: var(--text-strong);
   padding: 0.2rem 0.6rem;
   border-radius: 20px;
   font-size: 0.7rem;
   font-weight: 500;
-  border: 1px solid rgba(109, 116, 134, 0.3);
+  border: 1px solid var(--border);
 }
 
 .os-tag {
-  color: #0a0d13;
+  color: #0f172a;
   padding: 0.2rem 0.6rem;
   border-radius: 20px;
   font-size: 0.7rem;
@@ -200,7 +204,7 @@ const handleDownload = () => {
 
 .android-version {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--muted);
   margin-bottom: 0.75rem;
 }
 
@@ -210,9 +214,9 @@ const handleDownload = () => {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: linear-gradient(180deg, #6d7486 0%, #0a0d13 100%);
+  background: linear-gradient(180deg, var(--brand-2) 0%, var(--brand-1) 100%);
   color: white;
-  border: 1px solid rgba(109, 116, 134, 0.5);
+  border: 1px solid rgba(138, 108, 255, 0.5);
   border-radius: 10px;
   padding: 0.75rem 1rem;
   font-size: 0.9rem;
@@ -223,8 +227,8 @@ const handleDownload = () => {
 
 .download-btn:hover {
   transform: scale(1.02);
-  box-shadow: 0 4px 15px rgba(109, 116, 134, 0.4);
-  border-color: #6d7486;
+  box-shadow: 0 4px 15px rgba(138, 108, 255, 0.4);
+  border-color: var(--brand-1);
 }
 
 .download-icon {

@@ -32,8 +32,12 @@ const handleSearch = (event) => {
 <style scoped>
 .search-bar {
   padding: 1rem 2rem;
-  background: rgba(10, 13, 19, 0.5);
+  background: var(--search-bg, rgba(10, 13, 19, 0.5));
   font-family: 'Roboto', sans-serif;
+}
+
+[data-theme="light"] .search-bar {
+  --search-bg: rgba(255, 255, 255, 0.6);
 }
 
 .search-input-wrapper {
@@ -54,28 +58,28 @@ const handleSearch = (event) => {
 input {
   width: 100%;
   padding: 0.875rem 3rem;
-  border: 2px solid rgba(109, 116, 134, 0.3);
+  border: 2px solid var(--input-border);
   border-radius: 12px;
   font-size: 1rem;
   transition: all 0.3s ease;
-  background: rgba(20, 22, 28, 0.8);
-  color: #fff;
+  background: var(--input-bg);
+  color: var(--text-strong);
 }
 
 input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--input-placeholder);
 }
 
 input:focus {
   outline: none;
-  border-color: #6d7486;
-  box-shadow: 0 0 0 4px rgba(109, 116, 134, 0.2);
+  border-color: var(--brand-2);
+  box-shadow: 0 0 0 4px rgba(138, 108, 255, 0.2);
 }
 
 .clear-btn {
   position: absolute;
   right: 1rem;
-  background: rgba(109, 116, 134, 0.3);
+  background: var(--input-border);
   border: none;
   border-radius: 50%;
   width: 24px;
@@ -85,12 +89,12 @@ input:focus {
   align-items: center;
   justify-content: center;
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-strong);
   transition: all 0.3s ease;
 }
 
 .clear-btn:hover {
-  background: rgba(109, 116, 134, 0.5);
+  background: var(--brand-2);
   color: #fff;
 }
 </style>

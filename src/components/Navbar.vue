@@ -4,10 +4,11 @@ import { useI18n } from 'vue-i18n'
 import { setLocale } from '../i18n'
 
 const props = defineProps({
-  activeMenu: { type: String, default: 'home' }
+  activeMenu: { type: String, default: 'home' },
+  theme: { type: String, default: 'dark' }
 })
 const { t, locale } = useI18n()
-const emit = defineEmits(['menu-change', 'login'])
+const emit = defineEmits(['menu-change', 'login', 'toggle-theme'])
 
 const lang = computed({
   get: () => locale.value.toUpperCase(),
@@ -29,6 +30,8 @@ const setActiveMenu = (key) => {
 const setLang = (l) => {
   lang.value = l
 }
+
+const isDark = computed(() => props.theme === 'dark')
 </script>
 
 <template>
@@ -49,6 +52,19 @@ const setLang = (l) => {
     </div>
 
     <div class="nav-actions">
+      <button
+        class="theme-toggle"
+        :title="isDark ? 'Switch to light theme' : 'Switch to dark theme'"
+        :aria-label="isDark ? 'Switch to light theme' : 'Switch to dark theme'"
+        @click="emit('toggle-theme')"
+      >
+        <svg v-if="isDark" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v1.5a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1zm0 14.5a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9zm9-4.5a1 1 0 0 1-1 1h-1.5a1 1 0 1 1 0-2H20a1 1 0 0 1 1 1zM5 12a1 1 0 0 1-1 1H2.5a1 1 0 1 1 0-2H4a1 1 0 0 1 1 1zm14.95-7.07a1 1 0 0 1 0 1.41l-1.06 1.06a1 1 0 0 1-1.41-1.41l1.06-1.06a1 1 0 0 1 1.41 0zM6.52 17.9a1 1 0 0 1 0 1.41l-1.06 1.06a1 1 0 1 1-1.41-1.41l1.06-1.06a1 1 0 0 1 1.41 0zM12 19a1 1 0 0 1 1 1V21.5a1 1 0 1 1-2 0V20a1 1 0 0 1 1-1zm7.07-3.05a1 1 0 0 1 1.41 0l1.06 1.06a1 1 0 1 1-1.41 1.41l-1.06-1.06a1 1 0 0 1 0-1.41zM4.93 5.34a1 1 0 0 1 1.41 0L7.4 6.4a1 1 0 1 1-1.41 1.42L4.93 6.76a1 1 0 0 1 0-1.42z"/>
+        </svg>
+        <svg v-else viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M21.64 13a9 9 0 1 1-10.63-10.6 1 1 0 0 1 1.21 1.32A7 7 0 0 0 20.31 12a1 1 0 0 1 1.33 1z"/>
+        </svg>
+      </button>
       <div class="language-toggle">
         <button :class="{ active: lang === 'EN' }" @click="setLang('EN')">EN</button>
         <button :class="{ active: lang === 'VI' }" @click="setLang('VI')">VI</button>
@@ -60,11 +76,11 @@ const setLang = (l) => {
 
 <style scoped>
 .navbar {
-  background: rgba(0, 0, 0, 0.7);
+  background: var(--navbar-bg, rgba(0, 0, 0, 0.7));
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  color: white;
+  border: 1px solid var(--border);
+  color: var(--text);
   padding: 0.75rem 1.5rem;
   display: flex;
   align-items: center;
@@ -81,7 +97,12 @@ const setLang = (l) => {
   border-radius: 18px;
   z-index: 50;
   font-family: 'Roboto', sans-serif;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-strong);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme="light"] .navbar {
+  --navbar-bg: rgba(255, 255, 255, 0.75);
 }
 
 .nav-brand {
@@ -123,11 +144,11 @@ const setLang = (l) => {
 }
 
 .menu-btn:hover {
-  color: #fff;
+  color: var(--text-strong);
 }
 
 .menu-btn.active {
-  color: #fff;
+  color: var(--text-strong);
 }
 
 .menu-btn.active::after {
@@ -164,14 +185,14 @@ const setLang = (l) => {
 }
 
 .language-toggle button.active {
-  color: #fff;
+  color: var(--text-strong);
   background: rgba(138, 108, 255, 0.15);
 }
 
 .login-btn {
   padding: 0.5rem 1rem;
-  background: #fff;
-  color: #000;
+  background: var(--text-strong);
+  color: var(--bg);
   border: none;
   border-radius: 6px;
   font-weight: 500;
@@ -183,6 +204,32 @@ const setLang = (l) => {
 
 .login-btn:hover {
   transform: translateY(-1px);
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  font-family: inherit;
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.theme-toggle:hover {
+  color: var(--text-strong);
+  background: rgba(138, 108, 255, 0.12);
+  border-color: rgba(138, 108, 255, 0.3);
 }
 
 @media (max-width: 1000px) {
