@@ -68,11 +68,29 @@ const go = (key) => emit('navigate', key)
           <li class="devs-label">{{ t('footer.social.devs') }}</li>
           <li class="dev-row">
             <a href="https://t.me/Usagi79" target="_blank" rel="noopener noreferrer" class="dev-link">
-              <span class="dev-avatar">U</span>
+              <img
+                class="tg-avatar"
+                src="https://t.me/i/userpic/160/Usagi79.jpg"
+                alt="Usagi"
+                loading="lazy"
+                @error="$event.target.style.display='none'"
+              />
+              <svg class="tg-icon tg-icon-fallback" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.24 3.64 11.95c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.84.42z"/>
+              </svg>
               <span>{{ t('footer.social.dev1') }}</span>
             </a>
             <a href="https://t.me/lcnguy06" target="_blank" rel="noopener noreferrer" class="dev-link">
-              <span class="dev-avatar">R</span>
+              <img
+                class="tg-avatar"
+                src="https://t.me/i/userpic/160/lcnguy06.jpg"
+                alt="Rio"
+                loading="lazy"
+                @error="$event.target.style.display='none'"
+              />
+              <svg class="tg-icon tg-icon-fallback" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.24 3.64 11.95c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.84.42z"/>
+              </svg>
               <span>{{ t('footer.social.dev2') }}</span>
             </a>
           </li>
@@ -255,18 +273,21 @@ const go = (key) => emit('navigate', key)
   color: #fff;
 }
 
-.dev-avatar {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.tg-avatar {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: var(--brand-gradient);
-  color: #fff;
-  font-size: 0.72rem;
-  font-weight: 600;
-  font-family: 'Inter', 'Be Vietnam Pro', system-ui, sans-serif;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.dev-link .tg-icon-fallback {
+  display: none;
+}
+
+.dev-link:hover .tg-avatar {
+  border-color: rgba(42, 171, 238, 0.4);
 }
 
 @media (max-width: 480px) {
