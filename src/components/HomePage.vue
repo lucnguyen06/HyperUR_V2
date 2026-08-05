@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
+const emit = defineEmits(['navigate'])
 
 const featureKeys = ['f1', 'f2', 'f3']
 const buildKeys = ['hyperos']
@@ -14,6 +15,8 @@ const openFaq = ref(0)
 const toggleFaq = (i) => {
   openFaq.value = openFaq.value === i ? -1 : i
 }
+
+const goDownload = () => emit('navigate', 'download')
 </script>
 
 <template>
@@ -30,8 +33,8 @@ const toggleFaq = (i) => {
           {{ t('hero.desc', { brand: 'HyperUR' }) }}
         </p>
         <div class="hero-cta">
-          <button class="btn-primary">{{ t('hero.cta1') }}</button>
-          <button class="btn-ghost">{{ t('hero.cta2') }}</button>
+          <button class="btn-primary" @click="goDownload">{{ t('hero.cta1') }}</button>
+          <button class="btn-ghost" @click="goDownload">{{ t('hero.cta2') }}</button>
         </div>
       </div>
     </section>
@@ -129,8 +132,8 @@ const toggleFaq = (i) => {
     <section class="cta">
       <h2>{{ t('cta.title') }}</h2>
       <div class="cta-actions">
-        <button class="btn-primary">{{ t('cta.cta1') }}</button>
-        <button class="btn-ghost">{{ t('cta.cta2') }}</button>
+        <button class="btn-primary" @click="goDownload">{{ t('cta.cta1') }}</button>
+        <button class="btn-ghost" @click="goDownload">{{ t('cta.cta2') }}</button>
       </div>
     </section>
   </div>

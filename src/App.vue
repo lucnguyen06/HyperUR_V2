@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useHyperStore } from './stores/hyperStore'
 import Navbar from './components/Navbar.vue'
@@ -18,14 +18,27 @@ onMounted(() => {
 
 const handleMenuChange = (menu) => {
   activeMenu.value = menu
+  nextTick(() => {
+    if (menu === 'download') {
+      const el = document.getElementById('device-section')
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  })
 }
 
 const handleLogin = () => {
   activeMenu.value = 'login'
+  nextTick(() => window.scrollTo({ top: 0, behavior: 'smooth' }))
 }
 
 const handleNavigate = (key) => {
   activeMenu.value = key
+  nextTick(() => {
+    const el = document.getElementById('device-section')
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  })
 }
 
 const placeholders = [
@@ -46,11 +59,11 @@ const placeholders = [
     <main class="main-content">
       <!-- Home -->
       <div :class="{ hidden: activeMenu !== 'home' }">
-        <HomePage />
+        <HomePage @navigate="handleNavigate" />
       </div>
 
       <!-- Download -->
-      <div :class="['content-wrapper', { hidden: activeMenu !== 'download' }]">
+      <div :class="['content-wrapper', { hidden: activeMenu !== 'download' }]" id="device-section">
         <section class="main-section">
           <SearchBar />
           <DeviceGrid />
