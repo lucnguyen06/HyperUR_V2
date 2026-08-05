@@ -5,9 +5,7 @@ const en = {
     home: 'Home',
     download: 'Download',
     guide: 'Guide',
-    features: 'Features',
     changelog: 'Changelog',
-    support: 'Support',
     donate: 'Donate',
     login: 'Login'
   },
@@ -18,20 +16,6 @@ const en = {
     desc: 'Enjoy perfect smoothness, unlocked gaming frame rates, and fully working banking apps. Welcome to {brand}.',
     cta1: 'View Supported Devices',
     cta2: 'Read Guide'
-  },
-  features: {
-    f1: {
-      title: 'System Optimized',
-      desc: 'System interface tweaks and unlocked advanced features provide a snappy, battery-friendly daily experience.'
-    },
-    f2: {
-      title: 'Gaming Focused',
-      desc: 'Boosted performance and unlocked frame rates remove manufacturer limits for the ultimate stable gaming session.'
-    },
-    f3: {
-      title: 'Fully Secure',
-      desc: 'Bootloader unlock status is hidden by default. All your banking and e-wallet apps work flawlessly out of the box.'
-    }
   },
   builds: {
     kicker: 'BUILDS',
@@ -80,9 +64,7 @@ const en = {
   pages: {
     coming_soon: 'Feature under development',
     guide: { title: 'Installation Guide', desc: 'Step-by-step flash instructions for each vendor' },
-    features: { title: 'Features', desc: 'Detailed tweaks and customization options' },
     changelog: { title: 'Changelog', desc: 'Build history and recent updates' },
-    support: { title: 'Support', desc: 'Get help from the community' },
     donate: { title: 'Donate', desc: 'Support the ROM development team' },
     serial: { title: 'Serial Key Registration', desc: 'Register your serial to receive update notifications' },
     login: { title: 'Login / Register', desc: 'Sign in or create a new account' }
@@ -91,8 +73,8 @@ const en = {
     brand: 'HyperUR',
     tagline: 'Stock-based custom ROM refined from Xiaomi.',
     cols: {
-      nav: { title: 'Navigation', home: 'Home', download: 'Download', guide: 'Guide', features: 'Features' },
-      community: { title: 'Community', changelog: 'Changelog', support: 'Support', donate: 'Donate' },
+      nav: { title: 'Navigation', home: 'Home', download: 'Download', guide: 'Guide' },
+      community: { title: 'Community', changelog: 'Changelog', donate: 'Donate' },
       account: { title: 'Account', login: 'Login', register: 'Register' }
     },
     byline: 'BY UR TEAM',
@@ -113,9 +95,7 @@ const vi = {
     home: 'Trang Chủ',
     download: 'Tải ROM',
     guide: 'Hướng Dẫn',
-    features: 'Tính Năng',
     changelog: 'Changelog',
-    support: 'Hỗ Trợ',
     donate: 'Ủng Hộ',
     login: 'Đăng Nhập'
   },
@@ -126,20 +106,6 @@ const vi = {
     desc: 'Mượt mà hoàn hảo, mở khoá FPS gaming, và các app ngân hàng chạy đầy đủ. Chào mừng đến với {brand}.',
     cta1: 'Xem thiết bị hỗ trợ',
     cta2: 'Đọc hướng dẫn'
-  },
-  features: {
-    f1: {
-      title: 'Tối ưu hệ thống',
-      desc: 'Tinh chỉnh giao diện hệ thống và mở khoá các tính năng nâng cao, mang lại trải nghiệm nhanh và tiết kiệm pin.'
-    },
-    f2: {
-      title: 'Tập trung gaming',
-      desc: 'Tăng hiệu năng và mở khoá FPS, loại bỏ giới hạn của hãng để có phiên chơi game ổn định nhất.'
-    },
-    f3: {
-      title: 'Bảo mật tuyệt đối',
-      desc: 'Mặc định ẩn trạng thái mở khoá bootloader. Tất cả app ngân hàng và ví điện tử chạy mượt ngay sau khi flash.'
-    }
   },
   builds: {
     kicker: 'BẢN BUILD',
@@ -188,9 +154,7 @@ const vi = {
   pages: {
     coming_soon: 'Tính năng đang phát triển',
     guide: { title: 'Hướng Dẫn Cài Đặt', desc: 'Hướng dẫn flash chi tiết cho từng hãng' },
-    features: { title: 'Tính Năng', desc: 'Chi tiết các tinh chỉnh và tùy biến' },
     changelog: { title: 'Changelog', desc: 'Lịch sử build và các cập nhật gần đây' },
-    support: { title: 'Hỗ Trợ', desc: 'Nhận hỗ trợ từ cộng đồng' },
     donate: { title: 'Ủng Hộ', desc: 'Ủng hộ đội ngũ phát triển ROM' },
     serial: { title: 'Đăng Ký Serial Key', desc: 'Đăng ký serial để nhận thông báo cập nhật' },
     login: { title: 'Đăng Nhập / Đăng Ký', desc: 'Đăng nhập hoặc tạo tài khoản mới' }
@@ -199,8 +163,8 @@ const vi = {
     brand: 'HyperUR',
     tagline: 'ROM custom stock-based tinh chỉnh từ Xiaomi.',
     cols: {
-      nav: { title: 'Điều Hướng', home: 'Trang Chủ', download: 'Tải ROM', guide: 'Hướng Dẫn', features: 'Tính Năng' },
-      community: { title: 'Cộng Đồng', changelog: 'Changelog', support: 'Hỗ Trợ', donate: 'Ủng Hộ' },
+      nav: { title: 'Điều Hướng', home: 'Trang Chủ', download: 'Tải ROM', guide: 'Hướng Dẫn' },
+      community: { title: 'Cộng Đồng', changelog: 'Changelog', donate: 'Ủng Hộ' },
       account: { title: 'Tài Khoản', login: 'Đăng Nhập', register: 'Đăng Ký' }
     },
     byline: 'BỞI ĐỘI NGŨ UR',

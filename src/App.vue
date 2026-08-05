@@ -36,34 +36,39 @@ const handleLogin = () => {
 const handleNavigate = (key) => {
   activeMenu.value = key
   nextTick(() => {
-    const el = document.getElementById('device-section')
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    if (key === 'download') {
+      const el = document.getElementById('device-section')
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   })
 }
 
-const placeholders = [
-  { key: 'guide', icon: '📖' },
-  { key: 'features', icon: '✨' },
-  { key: 'changelog', icon: '📝' },
-  { key: 'support', icon: '💬' },
-  { key: 'donate', icon: '❤️' },
-  { key: 'serial', icon: '🔑' },
-  { key: 'login', icon: '👤' }
-]
+const placeholderMeta = (key) => {
+  const map = {
+    guide: { icon: '📖' },
+    changelog: { icon: '📝' },
+    donate: { icon: '❤️' },
+    serial: { icon: '🔑' },
+    login: { icon: '👤' }
+  }
+  return map[key] || { icon: '🔜' }
+}
 </script>
 
 <template>
   <div class="app">
-    <Navbar @menu-change="handleMenuChange" @login="handleLogin" />
+    <Navbar :active-menu="activeMenu" @menu-change="handleMenuChange" @login="handleLogin" />
 
     <main class="main-content">
       <!-- Home -->
-      <div :class="{ hidden: activeMenu !== 'home' }">
+      <div v-if="activeMenu === 'home'">
         <HomePage @navigate="handleNavigate" />
       </div>
 
       <!-- Download -->
-      <div :class="['content-wrapper', { hidden: activeMenu !== 'download' }]" id="device-section">
+      <div v-else-if="activeMenu === 'download'" class="content-wrapper" id="device-section">
         <section class="main-section">
           <SearchBar />
           <DeviceGrid />
@@ -72,13 +77,12 @@ const placeholders = [
 
       <!-- Placeholder pages -->
       <div
-        v-for="p in placeholders"
-        :key="p.key"
-        :class="['page-content', { hidden: activeMenu !== p.key && !(p.key === 'login' && activeMenu === 'register') }]"
+        v-else-if="['guide','changelog','donate','serial','login'].includes(activeMenu)"
+        class="page-content"
       >
         <div class="page-header">
-          <h2>{{ p.icon }} {{ t(`pages.${p.key}.title`) }}</h2>
-          <p>{{ t(`pages.${p.key}.desc`) }}</p>
+          <h2>{{ placeholderMeta(activeMenu).icon }} {{ t(`pages.${activeMenu}.title`) }}</h2>
+          <p>{{ t(`pages.${activeMenu}.desc`) }}</p>
         </div>
         <div class="coming-soon">
           <span class="icon">🔜</span>

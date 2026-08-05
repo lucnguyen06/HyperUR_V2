@@ -5,7 +5,6 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const emit = defineEmits(['navigate'])
 
-const featureKeys = ['f1', 'f2', 'f3']
 const buildKeys = ['hyperos']
 const stepKeys = ['s1', 's2', 's3', 's4']
 const compareKeys = ['r1', 'r2', 'r3', 'r4']
@@ -17,6 +16,7 @@ const toggleFaq = (i) => {
 }
 
 const goDownload = () => emit('navigate', 'download')
+const goGuide = () => emit('navigate', 'guide')
 </script>
 
 <template>
@@ -34,19 +34,8 @@ const goDownload = () => emit('navigate', 'download')
         </p>
         <div class="hero-cta">
           <button class="btn-primary" @click="goDownload">{{ t('hero.cta1') }}</button>
-          <button class="btn-ghost" @click="goDownload">{{ t('hero.cta2') }}</button>
+          <button class="btn-ghost" @click="goGuide">{{ t('hero.cta2') }}</button>
         </div>
-      </div>
-    </section>
-
-    <!-- Features -->
-    <section class="section">
-      <div class="feature-grid">
-        <article v-for="(key, i) in featureKeys" :key="key" class="feature-card">
-          <div class="feature-icon">{{ ['⚡', '🎮', '🔒'][i] }}</div>
-          <h3>{{ t(`features.${key}.title`) }}</h3>
-          <p>{{ t(`features.${key}.desc`) }}</p>
-        </article>
       </div>
     </section>
 
@@ -133,7 +122,7 @@ const goDownload = () => emit('navigate', 'download')
       <h2>{{ t('cta.title') }}</h2>
       <div class="cta-actions">
         <button class="btn-primary" @click="goDownload">{{ t('cta.cta1') }}</button>
-        <button class="btn-ghost" @click="goDownload">{{ t('cta.cta2') }}</button>
+        <button class="btn-ghost" @click="goGuide">{{ t('cta.cta2') }}</button>
       </div>
     </section>
   </div>
@@ -267,53 +256,6 @@ const goDownload = () => emit('navigate', 'download')
   font-weight: 600;
   color: #fff;
   letter-spacing: -0.02em;
-}
-
-/* Features */
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
-}
-
-.feature-card {
-  padding: 2rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  transition: border-color 0.25s ease, background 0.25s ease;
-}
-
-.feature-card:hover {
-  border-color: rgba(138, 108, 255, 0.4);
-  background: rgba(138, 108, 255, 0.04);
-}
-
-.feature-icon {
-  width: 52px;
-  height: 52px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.6rem;
-  background: linear-gradient(135deg, rgba(138, 108, 255, 0.15), rgba(216, 180, 255, 0.08));
-  border: 1px solid rgba(138, 108, 255, 0.3);
-  border-radius: 14px;
-  margin-bottom: 1.25rem;
-}
-
-.feature-card h3 {
-  font-family: 'Inter', 'Be Vietnam Pro', system-ui, sans-serif;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 0.5rem;
-}
-
-.feature-card p {
-  color: var(--muted);
-  line-height: 1.6;
-  font-size: 0.95rem;
 }
 
 /* Builds */

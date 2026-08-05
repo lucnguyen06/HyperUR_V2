@@ -4,8 +4,8 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const emit = defineEmits(['navigate'])
 
-const navKeys = ['home', 'download', 'guide', 'features']
-const communityKeys = ['changelog', 'support', 'donate']
+const navKeys = ['home', 'download', 'guide']
+const communityKeys = ['changelog', 'donate']
 const accountKeys = ['login', 'register']
 
 const go = (key) => emit('navigate', key)

@@ -3,9 +3,11 @@ import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { setLocale } from '../i18n'
 
+const props = defineProps({
+  activeMenu: { type: String, default: 'home' }
+})
 const { t, locale } = useI18n()
 const emit = defineEmits(['menu-change', 'login'])
-const activeMenu = ref('home')
 
 const lang = computed({
   get: () => locale.value.toUpperCase(),
@@ -16,14 +18,11 @@ const menuItems = [
   { key: 'home', labelKey: 'nav.home' },
   { key: 'download', labelKey: 'nav.download' },
   { key: 'guide', labelKey: 'nav.guide' },
-  { key: 'features', labelKey: 'nav.features' },
   { key: 'changelog', labelKey: 'nav.changelog' },
-  { key: 'support', labelKey: 'nav.support' },
   { key: 'donate', labelKey: 'nav.donate' }
 ]
 
 const setActiveMenu = (key) => {
-  activeMenu.value = key
   emit('menu-change', key)
 }
 
@@ -42,7 +41,7 @@ const setLang = (l) => {
       <button
         v-for="item in menuItems"
         :key="item.key"
-        :class="['menu-btn', { active: activeMenu === item.key }]"
+        :class="['menu-btn', { active: props.activeMenu === item.key }]"
         @click="setActiveMenu(item.key)"
       >
         {{ t(item.labelKey) }}
