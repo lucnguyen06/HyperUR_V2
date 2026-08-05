@@ -96,7 +96,15 @@ const en = {
       account: { title: 'Account', login: 'Login', register: 'Register' }
     },
     byline: 'BY UR TEAM',
-    copy: '© 2026 HYPERUR. ALL RIGHTS RESERVED.'
+    copy: '© 2026 HYPERUR. ALL RIGHTS RESERVED.',
+    social: {
+      title: 'Community',
+      channel: 'Update Channel',
+      chat: 'Chat Group',
+      devs: 'Developers',
+      dev1: 'Usagi',
+      dev2: 'Rio'
+    }
   }
 }
 
@@ -196,7 +204,15 @@ const vi = {
       account: { title: 'Tài Khoản', login: 'Đăng Nhập', register: 'Đăng Ký' }
     },
     byline: 'BỞI ĐỘI NGŨ UR',
-    copy: '© 2026 HYPERUR. BẢO LƯU MỌI QUYỀN.'
+    copy: '© 2026 HYPERUR. BẢO LƯU MỌI QUYỀN.',
+    social: {
+      title: 'Cộng Đồng',
+      channel: 'Kênh Cập Nhật',
+      chat: 'Nhóm Chat',
+      devs: 'Lập Trình Viên',
+      dev1: 'Usagi',
+      dev2: 'Rio'
+    }
   }
 }
 
