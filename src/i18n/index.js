@@ -12,7 +12,7 @@ const en = {
     login: 'Login'
   },
   hero: {
-    eyebrow: '🇻🇳 STOCK-BASED CUSTOM ROM',
+    eyebrow: '🇻🇳 STOCK-BASED CUSTOM ROM — XIAOMI',
     title1: 'Optimize your',
     title2: 'experience.',
     desc: 'Enjoy perfect smoothness, unlocked gaming frame rates, and fully working banking apps. Welcome to {brand}.',
@@ -45,7 +45,7 @@ const en = {
     title: 'Install in four steps',
     steps: {
       s1: { title: 'Identify device', desc: 'Confirm exact model, region and base Android version before flashing.' },
-      s2: { title: 'Download build', desc: 'Pick the right stock-based build for Xiaomi, OPPO, realme or OnePlus.' },
+      s2: { title: 'Download build', desc: 'Pick the right stock-based build for Xiaomi.' },
       s3: { title: 'Verify & flash', desc: 'Check hash, follow clean/dirty flash instructions inside the build thread.' },
       s4: { title: 'Boot & verify', desc: 'First boot, check camera, signal, fast-charge, OTA and restore your data.' }
     }
@@ -66,7 +66,7 @@ const en = {
     kicker: 'FAQ',
     title: 'Frequently asked questions',
     items: {
-      q1: { q: 'Is this an AOSP ROM?', a: 'No. It is built directly on top of vendor stock firmware (HyperOS, ColorOS, OxygenOS), so hardware features like camera, modem, fast-charge and fingerprint stay intact.' },
+      q1: { q: 'Is this an AOSP ROM?', a: 'No. It is built directly on top of vendor stock firmware (HyperOS), so hardware features like camera, modem, fast-charge and fingerprint stay intact.' },
       q2: { q: 'Will I lose warranty or need an unlocked bootloader?', a: 'Yes, an unlocked bootloader is required to flash. This may affect warranty depending on your region and vendor — read the guide before flashing.' },
       q3: { q: 'Do banking apps work after flashing?', a: 'Yes. The bootloader unlock status is hidden by default, so banking and e-wallet apps work out of the box without workarounds.' },
       q4: { q: 'Is my device supported?', a: 'Support depends on the vendor stock base available for your model. Check the Download page for the exact model and base Android version.' }
@@ -89,7 +89,7 @@ const en = {
   },
   footer: {
     brand: 'HyperUR',
-    tagline: 'Stock-based custom ROM refined from Xiaomi, OPPO, realme and OnePlus.',
+    tagline: 'Stock-based custom ROM refined from Xiaomi.',
     cols: {
       nav: { title: 'Navigation', home: 'Home', download: 'Download', guide: 'Guide', features: 'Features' },
       community: { title: 'Community', changelog: 'Changelog', support: 'Support', donate: 'Donate' },
@@ -145,7 +145,7 @@ const vi = {
     title: 'Cài đặt trong 4 bước',
     steps: {
       s1: { title: 'Xác định thiết bị', desc: 'Xác nhận chính xác model, region và phiên bản Android nền trước khi flash.' },
-      s2: { title: 'Tải bản build', desc: 'Chọn đúng bản stock-based cho Xiaomi, OPPO, realme hoặc OnePlus.' },
+      s2: { title: 'Tải bản build', desc: 'Chọn đúng bản stock-based cho Xiaomi.' },
       s3: { title: 'Kiểm tra & flash', desc: 'Kiểm tra hash, làm theo hướng dẫn clean/dirty flash trong thread của build.' },
       s4: { title: 'Khởi động & kiểm tra', desc: 'Boot lần đầu, kiểm tra camera, sóng, sạc nhanh, OTA và khôi phục dữ liệu.' }
     }
@@ -166,7 +166,7 @@ const vi = {
     kicker: 'FAQ',
     title: 'Câu hỏi thường gặp',
     items: {
-      q1: { q: 'Đây có phải ROM AOSP không?', a: 'Không. ROM được build trực tiếp trên firmware stock của hãng (HyperOS, ColorOS, OxygenOS), nên các tính năng phần cứng như camera, modem, sạc nhanh và vân tay đều hoạt động đúng.' },
+      q1: { q: 'Đây có phải ROM AOSP không?', a: 'Không. ROM được build trực tiếp trên firmware stock của hãng (HyperOS), nên các tính năng phần cứng như camera, modem, sạc nhanh và vân tay đều hoạt động đúng.' },
       q2: { q: 'Có mất bảo hành hay cần mở khoá bootloader không?', a: 'Cần bootloader đã mở khoá để flash. Tuỳ region và hãng, điều này có thể ảnh hưởng bảo hành — hãy đọc kỹ hướng dẫn trước khi flash.' },
       q3: { q: 'App ngân hàng có chạy được sau khi flash không?', a: 'Có. Trạng thái mở khoá bootloader được ẩn mặc định, nên các app ngân hàng và ví điện tử chạy mượt ngay không cần thủ thuật.' },
       q4: { q: 'Máy tôi có được hỗ trợ không?', a: 'Hỗ trợ tuỳ theo bản stock base có sẵn cho từng model. Vào trang Tải ROM để kiểm tra chính xác model và Android nền.' }
@@ -189,7 +189,7 @@ const vi = {
   },
   footer: {
     brand: 'HyperUR',
-    tagline: 'ROM custom stock-based tinh chỉnh từ Xiaomi, OPPO, realme và OnePlus.',
+    tagline: 'ROM custom stock-based tinh chỉnh từ Xiaomi.',
     cols: {
       nav: { title: 'Điều Hướng', home: 'Trang Chủ', download: 'Tải ROM', guide: 'Hướng Dẫn', features: 'Tính Năng' },
       community: { title: 'Cộng Đồng', changelog: 'Changelog', support: 'Hỗ Trợ', donate: 'Ủng Hộ' },
