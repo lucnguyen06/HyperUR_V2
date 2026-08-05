@@ -63,18 +63,25 @@ const setLang = (l) => {
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   color: white;
-  padding: 1rem 2rem;
+  padding: 0.75rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
   position: sticky;
-  top: 0;
+  top: 0.75rem;
+  left: 0;
+  right: 0;
+  margin: 0.75rem auto 0;
+  width: calc(100% - 2rem);
+  max-width: 1400px;
+  border-radius: 18px;
   z-index: 50;
   font-family: 'Roboto', sans-serif;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 
 .nav-brand {
