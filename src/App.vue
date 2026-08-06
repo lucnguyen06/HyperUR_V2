@@ -95,7 +95,7 @@ const placeholderMeta = (key) => {
 
       <!-- Download -->
       <div v-else-if="activeMenu === 'download'" class="content-wrapper" id="device-section">
-        <section class="main-section">
+        <section class="main-section glass">
           <SearchBar />
           <DeviceGrid />
         </section>
@@ -106,11 +106,11 @@ const placeholderMeta = (key) => {
         v-else-if="['guide','changelog','donate','serial','login'].includes(activeMenu)"
         class="page-content"
       >
-        <div class="page-header">
+        <div class="page-header glass">
           <h2>{{ placeholderMeta(activeMenu).icon }} {{ t(`pages.${activeMenu}.title`) }}</h2>
           <p>{{ t(`pages.${activeMenu}.desc`) }}</p>
         </div>
-        <div class="coming-soon">
+        <div class="coming-soon glass">
           <span class="icon">🔜</span>
           <p>{{ t('pages.coming_soon') }}</p>
         </div>
@@ -138,7 +138,11 @@ const placeholderMeta = (key) => {
 
 body {
   font-family: 'Inter', 'Be Vietnam Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(138, 108, 255, 0.18), transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(216, 180, 255, 0.12), transparent 55%),
+    var(--bg);
+  background-attachment: fixed;
   min-height: 100vh;
   color: var(--text-soft);
   -webkit-font-smoothing: antialiased;
@@ -146,10 +150,21 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+[data-theme="light"] body {
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(138, 108, 255, 0.22), transparent 55%),
+    radial-gradient(ellipse at 80% 100%, rgba(216, 180, 255, 0.18), transparent 55%),
+    var(--bg);
+}
+
 :root {
   --bg: #000;
   --surface: rgba(255, 255, 255, 0.03);
   --surface-strong: rgba(20, 22, 28, 0.8);
+  --glass-bg: rgba(20, 22, 28, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-highlight: rgba(255, 255, 255, 0.06);
+  --glass-blur: 18px;
   --border: rgba(255, 255, 255, 0.08);
   --border-strong: rgba(255, 255, 255, 0.1);
   --text: #fff;
@@ -173,6 +188,10 @@ body {
   --bg: #f5f6fa;
   --surface: rgba(255, 255, 255, 0.7);
   --surface-strong: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(15, 23, 42, 0.1);
+  --glass-highlight: rgba(255, 255, 255, 0.6);
+  --glass-blur: 16px;
   --border: rgba(15, 23, 42, 0.08);
   --border-strong: rgba(15, 23, 42, 0.12);
   --text: #0f172a;
@@ -212,12 +231,9 @@ body {
 }
 
 .page-header {
-  background: var(--surface-strong);
   border-radius: 16px;
   padding: 2rem;
   margin-bottom: 2rem;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border-strong);
 }
 
 .page-header h2 {
@@ -231,12 +247,9 @@ body {
 }
 
 .coming-soon {
-  background: var(--surface-strong);
   border-radius: 16px;
   padding: 4rem 2rem;
   text-align: center;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border-strong);
 }
 
 .coming-soon .icon {
@@ -251,10 +264,47 @@ body {
 }
 
 .main-section {
-  background: var(--surface-strong);
   border-radius: 16px;
+}
+
+.glass {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  border: 1px solid var(--glass-border);
   box-shadow: var(--shadow);
-  border: 1px solid var(--border-strong);
+  isolation: isolate;
+}
+
+.glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    var(--glass-highlight) 0%,
+    transparent 40%,
+    transparent 60%,
+    rgba(138, 108, 255, 0.15) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glass > * {
+  position: relative;
+  z-index: 1;
 }
 
 .hidden {

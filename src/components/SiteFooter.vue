@@ -108,16 +108,30 @@ const go = (key) => emit('navigate', key)
 
 <style scoped>
 .footer {
-  background: var(--footer-bg, #000);
-  border-top: 1px solid var(--border);
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  border-top: 1px solid var(--glass-border);
   padding: 3.5rem 2rem 1.5rem;
   margin-top: auto;
   font-family: 'Roboto', sans-serif;
   transition: background-color 0.3s ease, border-color 0.3s ease;
+  isolation: isolate;
 }
 
-[data-theme="light"] .footer {
-  --footer-bg: #ffffff;
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 60%,
+    rgba(138, 108, 255, 0.05) 100%
+  );
+  pointer-events: none;
+  z-index: -1;
 }
 
 .footer-inner {

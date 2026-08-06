@@ -92,7 +92,10 @@ const handleDownload = () => {
 
 <style scoped>
 .device-card {
-  background: var(--card-bg, rgba(20, 22, 28, 0.8));
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: var(--shadow);
@@ -100,17 +103,44 @@ const handleDownload = () => {
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--border-strong);
+  border: 1px solid var(--glass-border);
   font-family: 'Roboto', sans-serif;
+  isolation: isolate;
 }
 
-[data-theme="light"] .device-card {
-  --card-bg: #ffffff;
+.device-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    var(--glass-highlight) 0%,
+    transparent 35%,
+    transparent 65%,
+    rgba(138, 108, 255, 0.25) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.device-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .device-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(138, 108, 255, 0.18);
+  box-shadow: 0 12px 40px rgba(138, 108, 255, 0.22);
   border-color: rgba(138, 108, 255, 0.4);
 }
 

@@ -76,10 +76,11 @@ const isDark = computed(() => props.theme === 'dark')
 
 <style scoped>
 .navbar {
-  background: var(--navbar-bg, rgba(0, 0, 0, 0.7));
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border);
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  border: 1px solid var(--glass-border);
   color: var(--text);
   padding: 0.75rem 1.5rem;
   display: flex;
@@ -99,10 +100,37 @@ const isDark = computed(() => props.theme === 'dark')
   font-family: 'Roboto', sans-serif;
   box-shadow: var(--shadow-strong);
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  isolation: isolate;
 }
 
-[data-theme="light"] .navbar {
-  --navbar-bg: rgba(255, 255, 255, 0.75);
+.navbar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    var(--glass-highlight) 0%,
+    transparent 35%,
+    transparent 65%,
+    rgba(138, 108, 255, 0.35) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.navbar > * {
+  position: relative;
+  z-index: 1;
 }
 
 .nav-brand {

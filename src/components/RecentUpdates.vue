@@ -71,12 +71,45 @@ const getRegionColor = (region) => {
 
 <style scoped>
 .recent-updates {
-  background: var(--surface-strong);
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
   border-radius: 16px;
   padding: 1.5rem;
   box-shadow: var(--shadow);
-  border: 1px solid var(--border-strong);
+  border: 1px solid var(--glass-border);
   font-family: 'Roboto', sans-serif;
+  isolation: isolate;
+}
+
+.recent-updates::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    var(--glass-highlight) 0%,
+    transparent 50%,
+    rgba(138, 108, 255, 0.2) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.recent-updates > * {
+  position: relative;
+  z-index: 1;
 }
 
 .section-header {
