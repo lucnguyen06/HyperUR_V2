@@ -141,7 +141,7 @@ const goGuide = () => emit('navigate', 'guide')
   display: flex;
   justify-content: center;
   background:
-    radial-gradient(ellipse at top, rgba(138, 108, 255, 0.18), transparent 60%),
+    radial-gradient(ellipse at top, rgba(255, 255, 255, 0.08), transparent 60%),
     var(--bg);
 }
 
@@ -226,8 +226,8 @@ const goGuide = () => emit('navigate', 'guide')
   font-family: inherit;
 }
 .btn-ghost:hover {
-  background: rgba(138, 108, 255, 0.08);
-  border-color: rgba(138, 108, 255, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Section */
@@ -274,7 +274,7 @@ const goGuide = () => emit('navigate', 'guide')
   transition: border-color 0.25s ease;
 }
 .build-card:hover {
-  border-color: rgba(138, 108, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .build-card h3 {

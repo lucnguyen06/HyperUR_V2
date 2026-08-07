@@ -128,7 +128,7 @@ const go = (key) => emit('navigate', key)
     180deg,
     transparent 0%,
     transparent 60%,
-    rgba(138, 108, 255, 0.05) 100%
+    rgba(255, 255, 255, 0.04) 100%
   );
   pointer-events: none;
   z-index: -1;
@@ -146,11 +146,8 @@ const go = (key) => emit('navigate', key)
 .footer-brand h3 {
   font-family: 'Inter', 'Be Vietnam Pro', system-ui, sans-serif;
   font-size: 1.4rem;
-  font-weight: 600;
-  background: var(--brand-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-weight: 700;
+  color: var(--text-strong);
   margin: 0 0 0.6rem;
 }
 

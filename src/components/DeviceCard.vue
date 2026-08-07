@@ -119,7 +119,7 @@ const handleDownload = () => {
     var(--glass-highlight) 0%,
     transparent 35%,
     transparent 65%,
-    rgba(138, 108, 255, 0.25) 100%
+    rgba(255, 255, 255, 0.18) 100%
   );
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
@@ -140,12 +140,12 @@ const handleDownload = () => {
 
 .device-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 40px rgba(138, 108, 255, 0.22);
-  border-color: rgba(138, 108, 255, 0.4);
+  box-shadow: 0 12px 40px rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .device-image {
-  background: linear-gradient(180deg, rgba(138, 108, 255, 0.25) 0%, rgba(15, 23, 42, 0.85) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(15, 23, 42, 0.85) 100%);
   height: 160px;
   display: flex;
   align-items: center;
@@ -244,9 +244,9 @@ const handleDownload = () => {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: linear-gradient(180deg, var(--brand-2) 0%, var(--brand-1) 100%);
-  color: white;
-  border: 1px solid rgba(138, 108, 255, 0.5);
+  background: linear-gradient(180deg, #ffffff 0%, #b0b0b0 100%);
+  color: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 10px;
   padding: 0.75rem 1rem;
   font-size: 0.9rem;
@@ -257,8 +257,8 @@ const handleDownload = () => {
 
 .download-btn:hover {
   transform: scale(1.02);
-  box-shadow: 0 4px 15px rgba(138, 108, 255, 0.4);
-  border-color: var(--brand-1);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.25);
+  border-color: #ffffff;
 }
 
 .download-icon {

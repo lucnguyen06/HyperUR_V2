@@ -73,7 +73,7 @@ input::placeholder {
 input:focus {
   outline: none;
   border-color: var(--brand-2);
-  box-shadow: 0 0 0 4px rgba(138, 108, 255, 0.2);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.12);
 }
 
 .clear-btn {

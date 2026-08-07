@@ -93,7 +93,7 @@ const getRegionColor = (region) => {
     135deg,
     var(--glass-highlight) 0%,
     transparent 50%,
-    rgba(138, 108, 255, 0.2) 100%
+    rgba(255, 255, 255, 0.12) 100%
   );
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
@@ -147,7 +147,7 @@ const getRegionColor = (region) => {
 }
 
 .update-item:hover {
-  border-color: rgba(138, 108, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .device-info {

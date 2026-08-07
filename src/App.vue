@@ -139,8 +139,8 @@ const placeholderMeta = (key) => {
 body {
   font-family: 'Inter', 'Be Vietnam Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   background:
-    radial-gradient(ellipse at 20% 0%, rgba(138, 108, 255, 0.18), transparent 50%),
-    radial-gradient(ellipse at 80% 100%, rgba(216, 180, 255, 0.12), transparent 55%),
+    radial-gradient(ellipse at 20% 0%, rgba(255, 255, 255, 0.06), transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(255, 255, 255, 0.04), transparent 55%),
     var(--bg);
   background-attachment: fixed;
   min-height: 100vh;
@@ -152,8 +152,8 @@ body {
 
 [data-theme="light"] body {
   background:
-    radial-gradient(ellipse at 20% 0%, rgba(138, 108, 255, 0.22), transparent 55%),
-    radial-gradient(ellipse at 80% 100%, rgba(216, 180, 255, 0.18), transparent 55%),
+    radial-gradient(ellipse at 20% 0%, rgba(15, 23, 42, 0.06), transparent 55%),
+    radial-gradient(ellipse at 80% 100%, rgba(15, 23, 42, 0.05), transparent 55%),
     var(--bg);
 }
 
@@ -178,9 +178,9 @@ body {
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   --shadow-strong: 0 8px 32px rgba(0, 0, 0, 0.35);
   --scrollbar-thumb: rgba(255, 255, 255, 0.15);
-  --brand-1: #c8a2ff;
-  --brand-2: #8a6cff;
-  --brand-gradient: linear-gradient(135deg, #d8b4ff 0%, #8a6cff 100%);
+  --brand-1: #ffffff;
+  --brand-2: #b0b0b0;
+  --brand-gradient: linear-gradient(135deg, #ffffff 0%, #6b6b6b 100%);
   color-scheme: dark;
 }
 
@@ -288,7 +288,7 @@ body {
     var(--glass-highlight) 0%,
     transparent 40%,
     transparent 60%,
-    rgba(138, 108, 255, 0.15) 100%
+    rgba(255, 255, 255, 0.08) 100%
   );
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,

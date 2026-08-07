@@ -104,14 +104,14 @@ const error = computed(() => store.error)
   padding: 0.75rem 1.5rem;
   background: linear-gradient(180deg, var(--brand-2) 0%, var(--brand-1) 100%);
   color: white;
-  border: 1px solid rgba(138, 108, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .error-state button:hover {
-  border-color: var(--brand-1);
-  box-shadow: 0 4px 15px rgba(138, 108, 255, 0.3);
+  border-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
 }
 </style>

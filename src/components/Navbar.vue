@@ -114,7 +114,7 @@ const isDark = computed(() => props.theme === 'dark')
     var(--glass-highlight) 0%,
     transparent 35%,
     transparent 65%,
-    rgba(138, 108, 255, 0.35) 100%
+    rgba(255, 255, 255, 0.18) 100%
   );
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
@@ -142,12 +142,9 @@ const isDark = computed(() => props.theme === 'dark')
   margin: 0;
   font-family: 'Inter', 'Be Vietnam Pro', system-ui, sans-serif;
   font-size: 1.4rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.02em;
-  background: var(--brand-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--text-strong);
 }
 
 .nav-menu {
@@ -214,7 +211,7 @@ const isDark = computed(() => props.theme === 'dark')
 
 .language-toggle button.active {
   color: var(--text-strong);
-  background: rgba(138, 108, 255, 0.15);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .login-btn {
@@ -256,8 +253,8 @@ const isDark = computed(() => props.theme === 'dark')
 
 .theme-toggle:hover {
   color: var(--text-strong);
-  background: rgba(138, 108, 255, 0.12);
-  border-color: rgba(138, 108, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 @media (max-width: 1000px) {
