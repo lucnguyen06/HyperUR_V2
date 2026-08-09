@@ -6,6 +6,7 @@ import Navbar from './components/Navbar.vue'
 import SearchBar from './components/SearchBar.vue'
 import DeviceGrid from './components/DeviceGrid.vue'
 import HomePage from './components/HomePage.vue'
+import GuidePage from './components/GuidePage.vue'
 import SiteFooter from './components/SiteFooter.vue'
 
 const { t } = useI18n()
@@ -103,7 +104,7 @@ const placeholderMeta = (key) => {
 
       <!-- Placeholder pages -->
       <div
-        v-else-if="['guide','changelog','donate','serial','login'].includes(activeMenu)"
+        v-else-if="['changelog','donate','serial','login'].includes(activeMenu)"
         class="page-content"
       >
         <div class="page-header glass">
@@ -114,6 +115,11 @@ const placeholderMeta = (key) => {
           <span class="icon">🔜</span>
           <p>{{ t('pages.coming_soon') }}</p>
         </div>
+      </div>
+
+      <!-- Guide -->
+      <div v-else-if="activeMenu === 'guide'" class="content-wrapper">
+        <GuidePage @navigate="handleNavigate" />
       </div>
     </main>
 
