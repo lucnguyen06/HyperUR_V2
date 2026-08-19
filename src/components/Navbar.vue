@@ -94,7 +94,7 @@ const isDark = computed(() => props.theme === 'dark')
   right: 0;
   margin: 0.75rem auto 0;
   width: calc(100% - 2rem);
-  max-width: 1400px;
+  max-width: 1000px;
   border-radius: 18px;
   z-index: 50;
   font-family: 'Roboto', sans-serif;
