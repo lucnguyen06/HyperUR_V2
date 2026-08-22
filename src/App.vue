@@ -2,15 +2,19 @@
 import { ref, onMounted, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useHyperStore } from './stores/hyperStore'
+import { useAuthStore } from './stores/authStore'
 import Navbar from './components/Navbar.vue'
 import SearchBar from './components/SearchBar.vue'
 import DeviceGrid from './components/DeviceGrid.vue'
 import HomePage from './components/HomePage.vue'
 import GuidePage from './components/GuidePage.vue'
+import LoginPage from './components/LoginPage.vue'
+import SerialKeyPage from './components/SerialKeyPage.vue'
 import SiteFooter from './components/SiteFooter.vue'
 
 const { t } = useI18n()
 const store = useHyperStore()
+const auth = useAuthStore()
 const activeMenu = ref('home')
 const theme = ref('dark')
 
@@ -26,6 +30,7 @@ const toggleTheme = () => {
 
 onMounted(() => {
   store.fetchAllData()
+  auth.restoreSession()
   let saved = null
   try { saved = localStorage.getItem('hyperur-theme') } catch (e) { /* ignore */ }
   if (saved === 'dark' || saved === 'light') {
@@ -50,6 +55,30 @@ const handleMenuChange = (menu) => {
 }
 
 const handleLogin = () => {
+  authView.value = auth.isAuthenticated ? 'login' : (activeMenu.value === 'login' ? 'login' : 'login')
+  activeMenu.value = 'login'
+  nextTick(() => window.scrollTo({ top: 0, behavior: 'smooth' }))
+}
+
+const authView = ref('login')
+const onAuthSuccess = (user) => {
+  /* hook for analytics / toasts */
+}
+
+const handleAuthAction = (action) => {
+  if (action === 'logout') {
+    auth.logout()
+    activeMenu.value = 'home'
+    nextTick(() => window.scrollTo({ top: 0, behavior: 'smooth' }))
+  } else if (action === 'login' || action === 'register') {
+    authView.value = action
+    activeMenu.value = 'login'
+    nextTick(() => window.scrollTo({ top: 0, behavior: 'smooth' }))
+  }
+}
+
+const handleSerialNeedLogin = () => {
+  authView.value = 'login'
   activeMenu.value = 'login'
   nextTick(() => window.scrollTo({ top: 0, behavior: 'smooth' }))
 }
@@ -104,7 +133,7 @@ const placeholderMeta = (key) => {
 
       <!-- Placeholder pages -->
       <div
-        v-else-if="['changelog','donate','serial','login'].includes(activeMenu)"
+        v-else-if="['changelog','donate'].includes(activeMenu)"
         class="page-content"
       >
         <div class="page-header glass">
@@ -117,13 +146,35 @@ const placeholderMeta = (key) => {
         </div>
       </div>
 
+      <!-- Serial Key -->
+      <div v-else-if="activeMenu === 'serial'" class="page-content">
+        <div class="page-header glass">
+          <h2>{{ placeholderMeta('serial').icon }} {{ t('pages.serial.title') }}</h2>
+          <p>{{ t('pages.serial.desc') }}</p>
+        </div>
+        <SerialKeyPage @navigate="handleNavigate" @need-login="handleSerialNeedLogin" />
+      </div>
+
+      <!-- Login / Register -->
+      <div v-else-if="activeMenu === 'login'" class="page-content">
+        <div class="page-header glass">
+          <h2>{{ placeholderMeta('login').icon }} {{ t('pages.login.title') }}</h2>
+          <p>{{ t('pages.login.desc') }}</p>
+        </div>
+        <LoginPage
+          :initial-view="authView"
+          @navigate="handleNavigate"
+          @auth-success="onAuthSuccess"
+        />
+      </div>
+
       <!-- Guide -->
       <div v-else-if="activeMenu === 'guide'" class="content-wrapper">
         <GuidePage @navigate="handleNavigate" />
       </div>
     </main>
 
-    <SiteFooter @navigate="handleNavigate" />
+    <SiteFooter @navigate="handleNavigate" @auth-action="handleAuthAction" :is-authenticated="auth.isAuthenticated" :user="auth.user" />
   </div>
 </template>
 

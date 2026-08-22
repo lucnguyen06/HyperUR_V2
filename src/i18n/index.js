@@ -2,9 +2,12 @@ import { createI18n } from 'vue-i18n'
 
 const en = {
   nav: {
+    menu: 'Menu',
+    language: 'Language',
     home: 'Home',
     download: 'Download',
     guide: 'Guide',
+    serial: 'Serial Key',
     changelog: 'Changelog',
     donate: 'Donate',
     login: 'Login'
@@ -249,11 +252,83 @@ const en = {
     serial: { title: 'Serial Key Registration', desc: 'Register your serial to receive update notifications' },
     login: { title: 'Login / Register', desc: 'Sign in or create a new account' }
   },
+  auth: {
+    tab: {
+      login: 'Sign in',
+      register: 'Create account'
+    },
+    aside: {
+      title: 'Your HyperUR account',
+      desc: 'Sign in to track downloads, register serial keys, and receive update notifications for your devices.',
+      f1: { title: 'Lightning fast', desc: 'Save your device list and preferences once.' },
+      f2: { title: 'Update alerts', desc: 'Get notified the moment a new build drops.' },
+      f3: { title: 'Secure by design', desc: 'Your data is stored locally and never shared.' },
+      foot: 'By signing in, you agree to follow community guidelines.'
+    },
+    divider: { or: 'or' },
+    login: {
+      title: 'Welcome back',
+      subtitle: 'Sign in to continue managing your devices.',
+      identifier: 'Email or username',
+      identifier_ph: 'you@example.com',
+      password: 'Password',
+      password_ph: 'At least 6 characters',
+      remember: 'Keep me signed in',
+      forgot: 'Forgot password?',
+      submit: 'Sign in',
+      success: 'Signed in successfully. Redirecting...',
+      no_account: "Don't have an account?",
+      demo: 'Use demo credentials'
+    },
+    register: {
+      title: 'Create your account',
+      subtitle: 'It only takes a minute to get started.',
+      username: 'Username',
+      username_ph: '3–24 chars: letters, numbers, . _ -',
+      displayName: 'Display name',
+      displayName_ph: 'How others see you (optional)',
+      email: 'Email',
+      email_ph: 'you@example.com',
+      password: 'Password',
+      password_ph: 'At least 6 characters',
+      confirmPassword: 'Confirm password',
+      confirmPassword_ph: 'Re-enter your password',
+      agree_prefix: 'I agree to the',
+      agree_terms: 'Terms of Service',
+      agree_and: 'and',
+      agree_privacy: 'Privacy Policy',
+      submit: 'Create account',
+      success: 'Account created. Welcome aboard!',
+      have_account: 'Already have an account?'
+    },
+    forgot: {
+      title: 'Reset your password',
+      subtitle: "We'll generate a recovery token for your account.",
+      email: 'Registered email',
+      email_ph: 'you@example.com',
+      submit: 'Send reset token',
+      sent: 'A reset token has been generated.',
+      demo_token: 'Demo recovery token: {token} — copy this to reset your password.',
+      back: 'Back to sign in'
+    },
+    strength: {
+      weak: 'Weak',
+      fair: 'Fair',
+      good: 'Good',
+      strong: 'Strong'
+    }
+  },
+  account: {
+    welcome: 'Hi, {name}',
+    profile: 'Profile',
+    settings: 'Settings',
+    logout: 'Sign out'
+  },
   footer: {
     brand: 'HyperUR',
     tagline: 'Stock-based custom ROM refined from Xiaomi.',
     cols: {
-      nav: { title: 'Navigation', home: 'Home', download: 'Download', guide: 'Guide' },
+      nav: { title: 'Navigation', home: 'Home', download: 'Download', guide: 'Guide', serial: 'Serial Key' },
       community: { title: 'Community', changelog: 'Changelog', donate: 'Donate' },
       account: { title: 'Account', login: 'Login', register: 'Register' }
     },
@@ -267,14 +342,103 @@ const en = {
       dev1: 'Usagi',
       dev2: 'Rio'
     }
+  },
+  serial: {
+    brand: 'HyperUR • Serial Keys',
+    aside: {
+      title: 'Manage your HyperUR serials',
+      desc: 'Generate, look up, and manage serial keys for your devices. Each serial is tied to a username and unlocks update notifications.',
+      f1: { title: 'One-tap generate', desc: 'Get a unique 16-character key in seconds.' },
+      f2: { title: 'Device-bound', desc: 'Bind to a specific device and channel.' },
+      f3: { title: 'Stay notified', desc: 'Receive OTA alerts when builds drop.' },
+      logged_in_as: 'Signed in as {name}',
+      you_have: 'You have {count} active serial(s).',
+      login_first: 'Sign in to manage your serials'
+    },
+    tab: {
+      lookup: 'Look up',
+      register: 'Register',
+      mine: 'My serials'
+    },
+    lookup: {
+      title: 'Look up a serial',
+      subtitle: 'Enter your 16-character HyperUR serial to view its details.',
+      label: 'Serial key',
+      placeholder: 'HUR1-XXXX-XXXX-XXXX',
+      submit: 'Look up'
+    },
+    register: {
+      title: 'Register a new serial',
+      subtitle: 'Generate a fresh serial key bound to your account.',
+      username: 'Owner username',
+      device: 'Device model',
+      device_ph: 'e.g. POCO F6 Pro',
+      build: 'Build version',
+      build_ph: 'e.g. HyperUR 1.4.2',
+      channel: 'Update channel',
+      notes: 'Notes (optional)',
+      notes_ph: 'Anything we should know about this device?',
+      submit: 'Generate serial',
+      success: 'Serial generated: {serial}'
+    },
+    mine: {
+      title: 'My serials',
+      subtitle: 'All serials linked to your account.',
+      empty_title: 'No serials yet',
+      empty_desc: "You haven't registered any serials. Generate your first one to enable update notifications.",
+      empty_cta: 'Generate serial'
+    },
+    result: {
+      serial: 'Serial key',
+      device: 'Device',
+      build: 'Build',
+      channel: 'Channel',
+      owner: 'Owner',
+      issued: 'Issued',
+      expires: 'Expires',
+      notes: 'Notes',
+      copy: 'Copy',
+      copied: 'Copied!',
+      manage: 'Manage'
+    },
+    recent: {
+      title: 'Recently generated',
+      desc: 'You just created a serial — look it up to verify.',
+      use: 'Look up now'
+    },
+    status: {
+      active: 'Active',
+      expired: 'Expired',
+      revoked: 'Revoked'
+    },
+    channel: {
+      stable: 'Stable',
+      beta: 'Beta',
+      canary: 'Canary'
+    },
+    action: {
+      renew: 'Renew',
+      revoke: 'Revoke'
+    },
+    confirm: {
+      revoke: 'Revoke this serial? You can renew it later but device binding will be lost.'
+    },
+    errors: {
+      not_found: 'No serial matches that key. Double-check the format.',
+      need_login: 'You need to sign in first.',
+      go_login: 'Sign in'
+    }
   }
 }
 
 const vi = {
   nav: {
+    menu: 'Trình đơn',
+    language: 'Ngôn ngữ',
     home: 'Trang Chủ',
     download: 'Tải ROM',
     guide: 'Hướng Dẫn',
+    serial: 'Serial Key',
     changelog: 'Changelog',
     donate: 'Ủng Hộ',
     login: 'Đăng Nhập'
@@ -519,11 +683,83 @@ const vi = {
     serial: { title: 'Đăng Ký Serial Key', desc: 'Đăng ký serial để nhận thông báo cập nhật' },
     login: { title: 'Đăng Nhập / Đăng Ký', desc: 'Đăng nhập hoặc tạo tài khoản mới' }
   },
+  auth: {
+    tab: {
+      login: 'Đăng nhập',
+      register: 'Tạo tài khoản'
+    },
+    aside: {
+      title: 'Tài khoản HyperUR của bạn',
+      desc: 'Đăng nhập để theo dõi thiết bị đã tải, đăng ký serial và nhận thông báo khi có bản build mới.',
+      f1: { title: 'Siêu nhanh', desc: 'Lưu danh sách thiết bị và tuỳ chọn chỉ một lần.' },
+      f2: { title: 'Thông báo cập nhật', desc: 'Nhận thông báo ngay khi có build mới được phát hành.' },
+      f3: { title: 'An toàn & riêng tư', desc: 'Dữ liệu lưu local, không chia sẻ cho bên thứ ba.' },
+      foot: 'Bằng việc đăng nhập, bạn đồng ý tuân thủ nội quy cộng đồng.'
+    },
+    divider: { or: 'hoặc' },
+    login: {
+      title: 'Chào mừng quay lại',
+      subtitle: 'Đăng nhập để tiếp tục quản lý thiết bị của bạn.',
+      identifier: 'Email hoặc tên đăng nhập',
+      identifier_ph: 'ban@example.com',
+      password: 'Mật khẩu',
+      password_ph: 'Tối thiểu 6 ký tự',
+      remember: 'Duy trì đăng nhập',
+      forgot: 'Quên mật khẩu?',
+      submit: 'Đăng nhập',
+      success: 'Đăng nhập thành công. Đang chuyển hướng...',
+      no_account: 'Chưa có tài khoản?',
+      demo: 'Dùng tài khoản demo'
+    },
+    register: {
+      title: 'Tạo tài khoản của bạn',
+      subtitle: 'Chỉ mất một phút để bắt đầu.',
+      username: 'Tên đăng nhập',
+      username_ph: '3–24 ký tự: chữ, số, . _ -',
+      displayName: 'Tên hiển thị',
+      displayName_ph: 'Tên người khác thấy (tuỳ chọn)',
+      email: 'Email',
+      email_ph: 'ban@example.com',
+      password: 'Mật khẩu',
+      password_ph: 'Tối thiểu 6 ký tự',
+      confirmPassword: 'Xác nhận mật khẩu',
+      confirmPassword_ph: 'Nhập lại mật khẩu',
+      agree_prefix: 'Tôi đồng ý với',
+      agree_terms: 'Điều khoản sử dụng',
+      agree_and: 'và',
+      agree_privacy: 'Chính sách bảo mật',
+      submit: 'Tạo tài khoản',
+      success: 'Tạo tài khoản thành công. Chào mừng bạn!',
+      have_account: 'Đã có tài khoản?'
+    },
+    forgot: {
+      title: 'Đặt lại mật khẩu',
+      subtitle: 'Chúng tôi sẽ tạo mã khôi phục cho tài khoản của bạn.',
+      email: 'Email đã đăng ký',
+      email_ph: 'ban@example.com',
+      submit: 'Gửi mã khôi phục',
+      sent: 'Mã khôi phục đã được tạo.',
+      demo_token: 'Mã khôi phục demo: {token} — copy để đặt lại mật khẩu.',
+      back: 'Quay lại đăng nhập'
+    },
+    strength: {
+      weak: 'Yếu',
+      fair: 'Trung bình',
+      good: 'Tốt',
+      strong: 'Mạnh'
+    }
+  },
+  account: {
+    welcome: 'Chào, {name}',
+    profile: 'Hồ sơ',
+    settings: 'Cài đặt',
+    logout: 'Đăng xuất'
+  },
   footer: {
     brand: 'HyperUR',
     tagline: 'ROM custom stock-based tinh chỉnh từ Xiaomi.',
     cols: {
-      nav: { title: 'Điều Hướng', home: 'Trang Chủ', download: 'Tải ROM', guide: 'Hướng Dẫn' },
+      nav: { title: 'Điều Hướng', home: 'Trang Chủ', download: 'Tải ROM', guide: 'Hướng Dẫn', serial: 'Serial Key' },
       community: { title: 'Cộng Đồng', changelog: 'Changelog', donate: 'Ủng Hộ' },
       account: { title: 'Tài Khoản', login: 'Đăng Nhập', register: 'Đăng Ký' }
     },
@@ -536,6 +772,92 @@ const vi = {
       devs: 'Lập Trình Viên',
       dev1: 'Usagi',
       dev2: 'Rio'
+    }
+  },
+  serial: {
+    brand: 'HyperUR • Serial Keys',
+    aside: {
+      title: 'Quản lý serial HyperUR',
+      desc: 'Tạo, tra cứu và quản lý serial key cho thiết bị của bạn. Mỗi serial gắn với một username và mở khoá thông báo cập nhật.',
+      f1: { title: 'Tạo tức thì', desc: 'Lấy key 16 ký tự duy nhất chỉ trong vài giây.' },
+      f2: { title: 'Gắn với thiết bị', desc: 'Liên kết với thiết bị và kênh cụ thể.' },
+      f3: { title: 'Nhận thông báo', desc: 'Nhận alert OTA khi có bản build mới.' },
+      logged_in_as: 'Đang đăng nhập: {name}',
+      you_have: 'Bạn có {count} serial đang hoạt động.',
+      login_first: 'Đăng nhập để quản lý serial'
+    },
+    tab: {
+      lookup: 'Tra cứu',
+      register: 'Đăng ký',
+      mine: 'Serial của tôi'
+    },
+    lookup: {
+      title: 'Tra cứu serial',
+      subtitle: 'Nhập serial 16 ký tự HyperUR để xem chi tiết.',
+      label: 'Serial key',
+      placeholder: 'HUR1-XXXX-XXXX-XXXX',
+      submit: 'Tra cứu'
+    },
+    register: {
+      title: 'Đăng ký serial mới',
+      subtitle: 'Tạo serial key mới gắn với tài khoản của bạn.',
+      username: 'Username chủ sở hữu',
+      device: 'Model thiết bị',
+      device_ph: 'VD: POCO F6 Pro',
+      build: 'Phiên bản build',
+      build_ph: 'VD: HyperUR 1.4.2',
+      channel: 'Kênh cập nhật',
+      notes: 'Ghi chú (tuỳ chọn)',
+      notes_ph: 'Điều gì chúng tôi nên biết về thiết bị này?',
+      submit: 'Tạo serial',
+      success: 'Đã tạo serial: {serial}'
+    },
+    mine: {
+      title: 'Serial của tôi',
+      subtitle: 'Tất cả serial gắn với tài khoản của bạn.',
+      empty_title: 'Chưa có serial nào',
+      empty_desc: 'Bạn chưa đăng ký serial nào. Tạo serial đầu tiên để nhận thông báo cập nhật.',
+      empty_cta: 'Tạo serial'
+    },
+    result: {
+      serial: 'Serial key',
+      device: 'Thiết bị',
+      build: 'Build',
+      channel: 'Kênh',
+      owner: 'Chủ sở hữu',
+      issued: 'Ngày cấp',
+      expires: 'Ngày hết hạn',
+      notes: 'Ghi chú',
+      copy: 'Sao chép',
+      copied: 'Đã copy!',
+      manage: 'Quản lý'
+    },
+    recent: {
+      title: 'Vừa tạo gần đây',
+      desc: 'Bạn vừa tạo một serial — tra cứu để kiểm tra.',
+      use: 'Tra cứu ngay'
+    },
+    status: {
+      active: 'Hoạt động',
+      expired: 'Hết hạn',
+      revoked: 'Đã thu hồi'
+    },
+    channel: {
+      stable: 'Stable',
+      beta: 'Beta',
+      canary: 'Canary'
+    },
+    action: {
+      renew: 'Gia hạn',
+      revoke: 'Thu hồi'
+    },
+    confirm: {
+      revoke: 'Thu hồi serial này? Bạn vẫn có thể gia hạn sau nhưng sẽ mất gắn với thiết bị.'
+    },
+    errors: {
+      not_found: 'Không tìm thấy serial nào khớp. Kiểm tra lại định dạng.',
+      need_login: 'Bạn cần đăng nhập trước.',
+      go_login: 'Đăng nhập'
     }
   }
 }

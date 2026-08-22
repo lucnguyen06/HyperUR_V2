@@ -2,13 +2,32 @@
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
-const emit = defineEmits(['navigate'])
+const emit = defineEmits(['navigate', 'auth-action'])
 
-const navKeys = ['home', 'download', 'guide']
+const props = defineProps({
+  isAuthenticated: { type: Boolean, default: false },
+  user: { type: Object, default: null }
+})
+
+const navKeys = ['home', 'download', 'guide', 'serial']
 const communityKeys = ['changelog', 'donate']
-const accountKeys = ['login', 'register']
+const accountKeys = props.isAuthenticated ? ['profile', 'logout'] : ['login', 'register']
 
-const go = (key) => emit('navigate', key)
+const go = (key) => {
+  if (key === 'logout') {
+    emit('auth-action', 'logout')
+    return
+  }
+  if (key === 'register') {
+    emit('auth-action', 'register')
+    return
+  }
+  if (key === 'login') {
+    emit('auth-action', 'login')
+    return
+  }
+  emit('navigate', key)
+}
 </script>
 
 <template>
@@ -41,7 +60,12 @@ const go = (key) => emit('navigate', key)
         <h4>{{ t('footer.cols.account.title') }}</h4>
         <ul>
           <li v-for="key in accountKeys" :key="key">
-            <a href="#" @click.prevent="go(key)">{{ t(`footer.cols.account.${key}`) }}</a>
+            <a href="#" @click.prevent="go(key)">
+              <template v-if="key === 'login'">{{ t('nav.login') }}</template>
+              <template v-else-if="key === 'register'">{{ t('footer.cols.account.register') }}</template>
+              <template v-else-if="key === 'profile'">{{ t('account.profile') }}</template>
+              <template v-else-if="key === 'logout'">{{ t('account.logout') }}</template>
+            </a>
           </li>
         </ul>
       </div>
