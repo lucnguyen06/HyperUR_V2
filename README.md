@@ -10,24 +10,30 @@ A Vue.js application to display Xiaomi HyperOS ROM updates data from [HyperData]
 - Multi-language support (English/Chinese)
 - Responsive design
 
-## Tech Stack
+**Pure HTML/JS/CSS Version (Recommended)**
 
-- Vue 3 (Composition API)
-- Vite
-- Pinia (State Management)
-
-## Getting Started
+A lightweight version using only vanilla HTML, JavaScript, and CSS — no build tools required.
 
 ```bash
-# Install dependencies
-npm install
+# Serve with any static server
+npx serve public -p 3000
 
-# Run development server
-npm run dev
+# Or use Python
+python -m http.server 3000 --directory public
 
-# Build for production
-npm run build
+# Or open directly in browser
+# Navigate to public/index.html
 ```
+
+### Features
+
+- Full SPA routing with hash navigation
+- EN/VI internationalization
+- Dark/Light theme toggle
+- Device browser with search and brand filter
+- User authentication (localStorage)
+- Serial key management (localStorage)
+- Fully responsive design
 
 ## Data Source
 
