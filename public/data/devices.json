@@ -1,0 +1,77 @@
+{
+  "mi": {
+    "name": "Xiaomi",
+    "devices": [
+      {
+        "code": "marble",
+        "name": {
+          "en": "Redmi Note 12 Turbo",
+          "vi": "Redmi Note 12 Turbo"
+        },
+        "brand": "mi",
+        "region": "CN",
+        "android": "13"
+      },
+      {
+        "code": "fuxi",
+        "name": {
+          "en": "Xiaomi 13",
+          "vi": "Xiaomi 13"
+        },
+        "brand": "mi",
+        "region": "CN",
+        "android": "13"
+      },
+      {
+        "code": "ishtar",
+        "name": {
+          "en": "Xiaomi 13 Ultra",
+          "vi": "Xiaomi 13 Ultra"
+        },
+        "brand": "mi",
+        "region": "CN",
+        "android": "13"
+      },
+      {
+        "code": "nuwa",
+        "name": {
+          "en": "Xiaomi 13 Pro",
+          "vi": "Xiaomi 13 Pro"
+        },
+        "brand": "mi",
+        "region": "CN",
+        "android": "13"
+      }
+    ]
+  },
+  "redmi": {
+    "name": "Redmi",
+    "devices": [
+      {
+        "code": "marble",
+        "name": {
+          "en": "Redmi Note 12 Turbo",
+          "vi": "Redmi Note 12 Turbo"
+        },
+        "brand": "redmi",
+        "region": "CN",
+        "android": "13"
+      }
+    ]
+  },
+  "poco": {
+    "name": "POCO",
+    "devices": [
+      {
+        "code": "marble",
+        "name": {
+          "en": "POCO F5",
+          "vi": "POCO F5"
+        },
+        "brand": "poco",
+        "region": "Global",
+        "android": "13"
+      }
+    ]
+  }
+}

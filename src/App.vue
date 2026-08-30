@@ -157,11 +157,7 @@ const placeholderMeta = (key) => {
       </div>
 
       <!-- Login / Register -->
-      <div v-else-if="activeMenu === 'login'" class="page-content">
-        <div class="page-header glass">
-          <h2>{{ placeholderMeta('login').icon }} {{ t('pages.login.title') }}</h2>
-          <p>{{ t('pages.login.desc') }}</p>
-        </div>
+      <div v-else-if="activeMenu === 'login'">
         <LoginPage
           :initial-view="authView"
           @navigate="handleNavigate"

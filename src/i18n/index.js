@@ -270,7 +270,7 @@ const en = {
       title: 'Welcome back',
       subtitle: 'Sign in to continue managing your devices.',
       identifier: 'Email or username',
-      identifier_ph: 'you@example.com',
+      identifier_ph: 'name@example.com',
       password: 'Password',
       password_ph: 'At least 6 characters',
       remember: 'Keep me signed in',
@@ -278,7 +278,8 @@ const en = {
       submit: 'Sign in',
       success: 'Signed in successfully. Redirecting...',
       no_account: "Don't have an account?",
-      demo: 'Use demo credentials'
+      demo: 'Use demo credentials',
+      google: 'Continue with Google'
     },
     register: {
       title: 'Create your account',
@@ -288,7 +289,7 @@ const en = {
       displayName: 'Display name',
       displayName_ph: 'How others see you (optional)',
       email: 'Email',
-      email_ph: 'you@example.com',
+      email_ph: 'name@example.com',
       password: 'Password',
       password_ph: 'At least 6 characters',
       confirmPassword: 'Confirm password',
@@ -305,7 +306,7 @@ const en = {
       title: 'Reset your password',
       subtitle: "We'll generate a recovery token for your account.",
       email: 'Registered email',
-      email_ph: 'you@example.com',
+      email_ph: 'name@example.com',
       submit: 'Send reset token',
       sent: 'A reset token has been generated.',
       demo_token: 'Demo recovery token: {token} — copy this to reset your password.',
@@ -701,7 +702,7 @@ const vi = {
       title: 'Chào mừng quay lại',
       subtitle: 'Đăng nhập để tiếp tục quản lý thiết bị của bạn.',
       identifier: 'Email hoặc tên đăng nhập',
-      identifier_ph: 'ban@example.com',
+      identifier_ph: 'ten@example.com',
       password: 'Mật khẩu',
       password_ph: 'Tối thiểu 6 ký tự',
       remember: 'Duy trì đăng nhập',
@@ -709,7 +710,8 @@ const vi = {
       submit: 'Đăng nhập',
       success: 'Đăng nhập thành công. Đang chuyển hướng...',
       no_account: 'Chưa có tài khoản?',
-      demo: 'Dùng tài khoản demo'
+      demo: 'Dùng tài khoản demo',
+      google: 'Đăng nhập bằng Google'
     },
     register: {
       title: 'Tạo tài khoản của bạn',
@@ -719,7 +721,7 @@ const vi = {
       displayName: 'Tên hiển thị',
       displayName_ph: 'Tên người khác thấy (tuỳ chọn)',
       email: 'Email',
-      email_ph: 'ban@example.com',
+      email_ph: 'ten@example.com',
       password: 'Mật khẩu',
       password_ph: 'Tối thiểu 6 ký tự',
       confirmPassword: 'Xác nhận mật khẩu',
@@ -736,7 +738,7 @@ const vi = {
       title: 'Đặt lại mật khẩu',
       subtitle: 'Chúng tôi sẽ tạo mã khôi phục cho tài khoản của bạn.',
       email: 'Email đã đăng ký',
-      email_ph: 'ban@example.com',
+      email_ph: 'ten@example.com',
       submit: 'Gửi mã khôi phục',
       sent: 'Mã khôi phục đã được tạo.',
       demo_token: 'Mã khôi phục demo: {token} — copy để đặt lại mật khẩu.',
@@ -863,11 +865,11 @@ const vi = {
 }
 
 const saved = typeof localStorage !== 'undefined' ? localStorage.getItem('lang') : null
-const locale = saved || 'VI'
+const locale = saved ? saved.toLowerCase() : 'vi'
 
 export const i18n = createI18n({
   legacy: false,
-  locale: locale.toLowerCase(),
+  locale: locale,
   fallbackLocale: 'en',
   messages: { en, vi }
 })
