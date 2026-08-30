@@ -11,6 +11,7 @@ import GuidePage from './components/GuidePage.vue'
 import LoginPage from './components/LoginPage.vue'
 import SerialKeyPage from './components/SerialKeyPage.vue'
 import SiteFooter from './components/SiteFooter.vue'
+import ScrollToTop from './components/ScrollToTop.vue'
 
 const { t } = useI18n()
 const store = useHyperStore()
@@ -175,6 +176,8 @@ const placeholderMeta = (key) => {
     </main>
 
     <SiteFooter @navigate="handleNavigate" @auth-action="handleAuthAction" :is-authenticated="auth.isAuthenticated" :user="auth.user" />
+
+    <ScrollToTop />
   </div>
 </template>
 
@@ -193,6 +196,35 @@ const placeholderMeta = (key) => {
   box-sizing: border-box;
 }
 
+*:focus-visible {
+  outline: 2px solid var(--text-strong);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 6px;
+  border: 3px solid var(--bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
 body {
   font-family: 'Inter', 'Be Vietnam Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   background:
@@ -203,8 +235,10 @@ body {
   min-height: 100vh;
   color: var(--text-soft);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-x: hidden;
 }
 
 [data-theme="light"] body {
@@ -234,10 +268,13 @@ body {
   --input-placeholder: rgba(255, 255, 255, 0.4);
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   --shadow-strong: 0 8px 32px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 12px 40px rgba(255, 255, 255, 0.15);
   --scrollbar-thumb: rgba(255, 255, 255, 0.15);
   --brand-1: #ffffff;
   --brand-2: #b0b0b0;
   --brand-gradient: linear-gradient(135deg, #ffffff 0%, #6b6b6b 100%);
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   color-scheme: dark;
 }
 
@@ -261,6 +298,7 @@ body {
   --input-placeholder: rgba(15, 23, 42, 0.4);
   --shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
   --shadow-strong: 0 8px 32px rgba(15, 23, 42, 0.12);
+  --shadow-hover: 0 12px 40px rgba(15, 23, 42, 0.18);
   --scrollbar-thumb: rgba(15, 23, 42, 0.18);
   color-scheme: light;
 }
@@ -273,6 +311,22 @@ body {
 
 .main-content {
   flex: 1;
+  position: relative;
+}
+
+.main-content > div {
+  animation: pageTransition 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes pageTransition {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .content-wrapper {
@@ -288,40 +342,92 @@ body {
 }
 
 .page-header {
-  border-radius: 16px;
-  padding: 2rem;
+  border-radius: 18px;
+  padding: 2.5rem;
   margin-bottom: 2rem;
+  animation: slideDown 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .page-header h2 {
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.75rem 0;
   color: var(--text-strong);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .page-header p {
   color: var(--muted);
   margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
 }
 
 .coming-soon {
-  border-radius: 16px;
-  padding: 4rem 2rem;
+  border-radius: 18px;
+  padding: 5rem 2rem;
   text-align: center;
+  animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .coming-soon .icon {
-  font-size: 4rem;
+  font-size: 5rem;
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  animation: bounce 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
 .coming-soon p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: var(--muted);
+  font-weight: 500;
 }
 
 .main-section {
-  border-radius: 16px;
+  border-radius: 18px;
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .glass {

@@ -96,16 +96,17 @@ const handleDownload = () => {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur)) saturate(180%);
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
   box-shadow: var(--shadow);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   display: flex;
   flex-direction: column;
   border: 1px solid var(--glass-border);
   font-family: 'Roboto', sans-serif;
   isolation: isolate;
+  will-change: transform, box-shadow, border-color;
 }
 
 .device-card::before {
@@ -131,6 +132,23 @@ const handleDownload = () => {
   mask-composite: exclude;
   pointer-events: none;
   z-index: 0;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.device-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 255, 255, 0.08),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .device-card > * {
@@ -139,19 +157,36 @@ const handleDownload = () => {
 }
 
 .device-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 40px rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.device-card:hover::before {
+  opacity: 1.5;
+}
+
+.device-card:hover::after {
+  opacity: 1;
+}
+
+.device-card:active {
+  transform: translateY(-4px) scale(1.01);
 }
 
 .device-image {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(15, 23, 42, 0.85) 100%);
-  height: 160px;
+  height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.device-card:hover .device-image {
+  transform: scale(1.05);
 }
 
 .device-render {
@@ -159,8 +194,14 @@ const handleDownload = () => {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 16px;
+  padding: 20px;
   z-index: 1;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+.device-card:hover .device-render {
+  transform: scale(1.1) rotate(2deg);
 }
 
 .device-icon {
@@ -188,54 +229,84 @@ const handleDownload = () => {
 }
 
 .device-info {
-  padding: 1rem;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   flex: 1;
+  gap: 0.5rem;
 }
 
 .device-name {
-  margin: 0 0 0.25rem 0;
-  font-size: 1.1rem;
+  margin: 0;
+  font-size: 1.15rem;
   color: var(--text-strong);
   font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.device-card:hover .device-name {
+  color: var(--brand-1);
 }
 
 .device-code {
-  margin: 0 0 0.5rem 0;
-  font-size: 0.8rem;
+  margin: 0;
+  font-size: 0.82rem;
   color: var(--muted);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.02em;
 }
 
 .device-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 0.5rem;
 }
 
 .series-tag {
   background: var(--surface);
   color: var(--text-strong);
-  padding: 0.2rem 0.6rem;
+  padding: 0.35rem 0.75rem;
   border-radius: 20px;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 500;
   border: 1px solid var(--border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.device-card:hover .series-tag {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .os-tag {
   color: #0f172a;
-  padding: 0.2rem 0.6rem;
+  padding: 0.35rem 0.75rem;
   border-radius: 20px;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.device-card:hover .os-tag {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .android-version {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: var(--muted);
-  margin-bottom: 0.75rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.android-version::before {
+  content: '🤖';
+  font-size: 0.9rem;
 }
 
 .download-btn {
@@ -243,25 +314,52 @@ const handleDownload = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  background: linear-gradient(180deg, #ffffff 0%, #b0b0b0 100%);
+  gap: 0.6rem;
+  background: linear-gradient(135deg, #ffffff 0%, #d0d0d0 100%);
   color: #0a0a0a;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-  padding: 0.75rem 1rem;
-  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  padding: 0.85rem 1.25rem;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  font-family: inherit;
+}
+
+.download-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.download-btn:hover::before {
+  transform: translateX(100%);
 }
 
 .download-btn:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
   border-color: #ffffff;
+  background: linear-gradient(135deg, #ffffff 0%, #e8e8e8 100%);
+}
+
+.download-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 }
 
 .download-icon {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.download-btn:hover .download-icon {
+  transform: translateY(3px);
 }
 </style>

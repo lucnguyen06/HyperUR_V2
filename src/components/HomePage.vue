@@ -136,13 +136,41 @@ const goGuide = () => emit('navigate', 'guide')
 
 /* Hero */
 .hero {
-  padding: 7rem 2rem 5rem;
+  padding: 8rem 2rem 6rem;
   text-align: center;
   display: flex;
   justify-content: center;
   background:
-    radial-gradient(ellipse at top, rgba(255, 255, 255, 0.08), transparent 60%),
+    radial-gradient(ellipse at top, rgba(255, 255, 255, 0.12), transparent 60%),
     var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse 800px 400px at 50% 0%,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  pointer-events: none;
+  animation: pulse 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .hero-inner {
@@ -151,23 +179,57 @@ const goGuide = () => emit('navigate', 'guide')
 
 .eyebrow {
   display: inline-block;
-  padding: 0.4rem 0.9rem;
+  padding: 0.5rem 1.2rem;
   border: 1px solid var(--border);
   border-radius: 999px;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
   color: var(--muted);
-  margin-bottom: 1.75rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.eyebrow:hover {
+  border-color: var(--border-strong);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
 }
 
 .hero-title {
   font-family: 'Inter', 'Be Vietnam Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: clamp(2.8rem, 7vw, 5.2rem);
+  font-size: clamp(3rem, 8vw, 5.5rem);
   line-height: 1.05;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-strong);
-  letter-spacing: -0.03em;
-  margin-bottom: 1.5rem;
+  letter-spacing: -0.04em;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .grad {
@@ -194,47 +256,118 @@ const goGuide = () => emit('navigate', 'guide')
 
 .hero-cta {
   display: flex;
-  gap: 0.75rem;
+  gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .btn-primary {
-  padding: 0.85rem 1.75rem;
-  border-radius: 8px;
+  padding: 1rem 2rem;
+  border-radius: 12px;
   border: 1px solid var(--text-strong);
   background: var(--text-strong);
   color: var(--bg);
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1.05rem;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: inherit;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.25);
 }
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover::before {
+  transform: translateX(100%);
+}
+
 .btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.btn-primary:active {
   transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.9);
 }
 
 .btn-ghost {
-  padding: 0.85rem 1.75rem;
-  border-radius: 8px;
+  padding: 1rem 2rem;
+  border-radius: 12px;
   background: transparent;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border-strong);
   color: var(--text-strong);
+  font-size: 1.05rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: inherit;
+  position: relative;
+  overflow: hidden;
 }
+
+.btn-ghost::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.1);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-ghost:hover::before {
+  transform: scaleX(1);
+}
+
 .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: var(--text-strong);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
+}
+
+.btn-ghost:active {
+  transform: translateY(-1px);
 }
 
 /* Section */
 .section {
-  padding: 4.5rem 2rem;
+  padding: 5rem 2rem;
   max-width: 1100px;
   margin: 0 auto;
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .section-header {
@@ -266,15 +399,38 @@ const goGuide = () => emit('navigate', 'guide')
 }
 
 .build-card {
-  padding: 1.75rem;
+  padding: 2rem;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 16px;
   text-align: center;
-  transition: border-color 0.25s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
+
+.build-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 255, 255, 0.08),
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.build-card:hover::before {
+  opacity: 1;
+}
+
 .build-card:hover {
-  border-color: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .build-card h3 {
@@ -300,13 +456,39 @@ const goGuide = () => emit('navigate', 'guide')
 }
 
 .step {
-  padding: 1.5rem;
+  padding: 1.75rem;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 16px;
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem;
   align-items: flex-start;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.step::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--brand-gradient);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step:hover::before {
+  transform: scaleY(1);
+}
+
+.step:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateX(8px);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .step-no {
@@ -384,8 +566,19 @@ const goGuide = () => emit('navigate', 'guide')
 .faq-item {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.faq-item.open {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .faq-q {
@@ -409,13 +602,30 @@ const goGuide = () => emit('navigate', 'guide')
 }
 
 .faq-toggle {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   color: var(--brand-1);
   line-height: 1;
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.faq-item.open .faq-toggle {
+  transform: rotate(180deg);
 }
 
 .faq-a {
-  padding: 0 1.25rem 1.1rem;
+  padding: 0 1.25rem 1.25rem;
+  animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .faq-a p {
