@@ -111,7 +111,6 @@ const fillDemoAccount = () => {
 const handleGoogleLogin = async () => {
   submitError.value = null
   try {
-    // Simulate Google OAuth flow
     const googleUser = {
       id: 'google_' + Date.now(),
       email: 'user@gmail.com',
@@ -173,61 +172,30 @@ const handleGoogleLogin = async () => {
 
       <section class="auth-main">
         <header class="auth-tabs">
-          <button
-            :class="['tab', { active: view === 'login' }]"
-            @click="switchView('login')"
-            type="button"
-          >
+          <button :class="['tab', { active: view === 'login' }]" @click="switchView('login')" type="button">
             {{ t('auth.tab.login') }}
           </button>
-          <button
-            :class="['tab', { active: view === 'register' }]"
-            @click="switchView('register')"
-            type="button"
-          >
+          <button :class="['tab', { active: view === 'register' }]" @click="switchView('register')" type="button">
             {{ t('auth.tab.register') }}
           </button>
         </header>
 
-        <div>
-          <transition name="fade" mode="out-in">
+        <transition name="fade" mode="out-in">
           <!-- LOGIN -->
-          <form
-            v-if="view === 'login'"
-            key="login"
-            class="auth-form"
-            @submit.prevent="handleLogin"
-          >
+          <form v-if="view === 'login'" key="login" class="auth-form" @submit.prevent="handleLogin">
             <h3>{{ t('auth.login.title') }}</h3>
             <p class="muted">{{ t('auth.login.subtitle') }}</p>
 
             <label class="field">
               <span>{{ t('auth.login.identifier') }}</span>
-              <input
-                v-model="loginForm.identifier"
-                type="text"
-                autocomplete="username"
-                :placeholder="t('auth.login.identifier_ph')"
-                required
-              />
+              <input v-model="loginForm.identifier" type="text" autocomplete="username" :placeholder="t('auth.login.identifier_ph')" required />
             </label>
 
             <label class="field">
               <span>{{ t('auth.login.password') }}</span>
               <div class="pwd-wrap">
-                <input
-                  v-model="loginForm.password"
-                  :type="showPassword ? 'text' : 'password'"
-                  autocomplete="current-password"
-                  :placeholder="t('auth.login.password_ph')"
-                  required
-                />
-                <button
-                  type="button"
-                  class="eye-btn"
-                  :aria-label="showPassword ? 'Hide' : 'Show'"
-                  @click="showPassword = !showPassword"
-                >
+                <input v-model="loginForm.password" :type="showPassword ? 'text' : 'password'" autocomplete="current-password" :placeholder="t('auth.login.password_ph')" required />
+                <button type="button" class="eye-btn" :aria-label="showPassword ? 'Hide' : 'Show'" @click="showPassword = !showPassword">
                   {{ showPassword ? '🙈' : '👁' }}
                 </button>
               </div>
@@ -238,11 +206,7 @@ const handleGoogleLogin = async () => {
                 <input v-model="loginForm.remember" type="checkbox" />
                 <span>{{ t('auth.login.remember') }}</span>
               </label>
-              <button
-                type="button"
-                class="link-btn"
-                @click="switchView('forgot')"
-              >
+              <button type="button" class="link-btn" @click="switchView('forgot')">
                 {{ t('auth.login.forgot') }}
               </button>
             </div>
@@ -258,7 +222,7 @@ const handleGoogleLogin = async () => {
             <div class="divider"><span>{{ t('auth.divider.or') }}</span></div>
 
             <button type="button" class="google-btn" @click="handleGoogleLogin">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/>
                 <path d="M9.003 18c2.43 0 4.467-.806 5.956-2.18L12.05 13.56c-.806.54-1.836.86-3.047.86-2.344 0-4.328-1.584-5.036-3.711H.96v2.332C2.44 15.983 5.485 18 9.003 18z" fill="#34A853"/>
                 <path d="M3.964 10.712c-.18-.54-.282-1.117-.282-1.71 0-.593.102-1.17.282-1.71V4.96H.957C.347 6.175 0 7.55 0 9.002c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/>
@@ -280,63 +244,31 @@ const handleGoogleLogin = async () => {
           </form>
 
           <!-- REGISTER -->
-          <form
-            v-else-if="view === 'register'"
-            key="register"
-            class="auth-form"
-            @submit.prevent="handleRegister"
-          >
+          <form v-else-if="view === 'register'" key="register" class="auth-form" @submit.prevent="handleRegister">
             <h3>{{ t('auth.register.title') }}</h3>
             <p class="muted">{{ t('auth.register.subtitle') }}</p>
 
             <div class="grid-2">
               <label class="field">
                 <span>{{ t('auth.register.username') }}</span>
-                <input
-                  v-model="registerForm.username"
-                  type="text"
-                  autocomplete="username"
-                  :placeholder="t('auth.register.username_ph')"
-                  required
-                />
+                <input v-model="registerForm.username" type="text" autocomplete="username" :placeholder="t('auth.register.username_ph')" required />
               </label>
               <label class="field">
                 <span>{{ t('auth.register.displayName') }}</span>
-                <input
-                  v-model="registerForm.displayName"
-                  type="text"
-                  :placeholder="t('auth.register.displayName_ph')"
-                />
+                <input v-model="registerForm.displayName" type="text" :placeholder="t('auth.register.displayName_ph')" />
               </label>
             </div>
 
             <label class="field">
               <span>{{ t('auth.register.email') }}</span>
-              <input
-                v-model="registerForm.email"
-                type="email"
-                autocomplete="email"
-                :placeholder="t('auth.register.email_ph')"
-                required
-              />
+              <input v-model="registerForm.email" type="email" autocomplete="email" :placeholder="t('auth.register.email_ph')" required />
             </label>
 
             <label class="field">
               <span>{{ t('auth.register.password') }}</span>
               <div class="pwd-wrap">
-                <input
-                  v-model="registerForm.password"
-                  :type="showPassword ? 'text' : 'password'"
-                  autocomplete="new-password"
-                  :placeholder="t('auth.register.password_ph')"
-                  required
-                />
-                <button
-                  type="button"
-                  class="eye-btn"
-                  @click="showPassword = !showPassword"
-                  :aria-label="showPassword ? 'Hide' : 'Show'"
-                >
+                <input v-model="registerForm.password" :type="showPassword ? 'text' : 'password'" autocomplete="new-password" :placeholder="t('auth.register.password_ph')" required />
+                <button type="button" class="eye-btn" @click="showPassword = !showPassword" :aria-label="showPassword ? 'Hide' : 'Show'">
                   {{ showPassword ? '🙈' : '👁' }}
                 </button>
               </div>
@@ -349,19 +281,8 @@ const handleGoogleLogin = async () => {
             <label class="field">
               <span>{{ t('auth.register.confirmPassword') }}</span>
               <div class="pwd-wrap">
-                <input
-                  v-model="registerForm.confirmPassword"
-                  :type="showConfirm ? 'text' : 'password'"
-                  autocomplete="new-password"
-                  :placeholder="t('auth.register.confirmPassword_ph')"
-                  required
-                />
-                <button
-                  type="button"
-                  class="eye-btn"
-                  @click="showConfirm = !showConfirm"
-                  :aria-label="showConfirm ? 'Hide' : 'Show'"
-                >
+                <input v-model="registerForm.confirmPassword" :type="showConfirm ? 'text' : 'password'" autocomplete="new-password" :placeholder="t('auth.register.confirmPassword_ph')" required />
+                <button type="button" class="eye-btn" @click="showConfirm = !showConfirm" :aria-label="showConfirm ? 'Hide' : 'Show'">
                   {{ showConfirm ? '🙈' : '👁' }}
                 </button>
               </div>
@@ -393,25 +314,14 @@ const handleGoogleLogin = async () => {
             </p>
           </form>
 
-          <!-- FORGOT -->
-          <form
-            v-else
-            key="forgot"
-            class="auth-form"
-            @submit.prevent="handleForgot"
-          >
+          <!-- FORGOT PASSWORD -->
+          <form v-else key="forgot" class="auth-form" @submit.prevent="handleForgot">
             <h3>{{ t('auth.forgot.title') }}</h3>
             <p class="muted">{{ t('auth.forgot.subtitle') }}</p>
 
             <label class="field">
               <span>{{ t('auth.forgot.email') }}</span>
-              <input
-                v-model="forgotForm.email"
-                type="email"
-                autocomplete="email"
-                :placeholder="t('auth.forgot.email_ph')"
-                required
-              />
+              <input v-model="forgotForm.email" type="email" autocomplete="email" :placeholder="t('auth.forgot.email_ph')" required />
             </label>
 
             <p v-if="submitError" class="alert error">{{ submitError }}</p>
@@ -430,8 +340,7 @@ const handleGoogleLogin = async () => {
               </button>
             </p>
           </form>
-          </transition>
-        </div>
+        </transition>
       </section>
     </div>
   </div>
@@ -452,16 +361,13 @@ const handleGoogleLogin = async () => {
   border-radius: 22px;
   overflow: hidden;
   min-height: 580px;
-  background: var(--glass-bg);
 }
 
 .auth-aside {
-  position: relative;
   padding: 2.5rem 2rem;
-  background:
-    radial-gradient(ellipse at 0% 0%, rgba(255, 255, 255, 0.08), transparent 60%),
-    radial-gradient(ellipse at 100% 100%, rgba(255, 255, 255, 0.05), transparent 55%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+  background: radial-gradient(ellipse at 0% 0%, rgba(255, 255, 255, 0.08), transparent 60%),
+              radial-gradient(ellipse at 100% 100%, rgba(255, 255, 255, 0.05), transparent 55%),
+              linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
   border-right: 1px solid var(--glass-border);
   display: flex;
   flex-direction: column;
@@ -548,7 +454,6 @@ const handleGoogleLogin = async () => {
   padding: 2.25rem 2rem;
   display: flex;
   flex-direction: column;
-  color: var(--text-soft);
 }
 
 .auth-tabs {
@@ -876,8 +781,7 @@ const handleGoogleLogin = async () => {
 .strength[data-level="4"] .fill,
 .strength[data-level="5"] .fill { background: linear-gradient(90deg, #6fe79a, #4cd9c7); }
 
-.fade-enter-active,
-.fade-leave-active {
+.fade-enter-active, .fade-leave-active {
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
@@ -900,16 +804,8 @@ const handleGoogleLogin = async () => {
     border-bottom: 1px solid var(--glass-border);
     padding: 2rem 1.5rem;
   }
-  .aside-feats {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  .aside-feats li {
-    flex: 1 1 200px;
-  }
-  .aside-foot {
-    padding-top: 1rem;
+  .grid-2 {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -919,9 +815,6 @@ const handleGoogleLogin = async () => {
   }
   .auth-main {
     padding: 1.5rem 1.25rem;
-  }
-  .grid-2 {
-    grid-template-columns: 1fr;
   }
   .auth-tabs {
     width: 100%;
